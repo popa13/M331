@@ -1,0 +1,454 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+
+\usepackage{comment}
+\usepackage{url}
+
+\usepackage{titlesec}
+\titleformat{\section}[frame]
+{\normalfont\scshape}
+{\thesection}{8pt}{\centering}
+
+\usepackage{array}
+
+\pgfplotsset{compat=1.16}
+
+%\usepackage[margin=1cm]{cloze}
+
+\usepackage[thmmarks]{ntheorem}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+    
+\newcommand{\MyC}[1]{\begin{tikzpicture}
+\node (boxIntro) at (0,0) {};
+\node [myboxT](Intro) at (boxIntro){%
+	\begin{minipage}{0.9\textwidth}
+	#1
+	\end{minipage}};
+\end{tikzpicture}}
+
+%%%%  Environnement exer et solutionnaire
+{\theorembodyfont{}
+\theoremstyle{plain}
+\theoremseparator{\textbf{.}}
+\theoremsymbol{}
+\newtheorem{exer}{\textbf{Exercise}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\square$}
+\newtheorem*{sol}{\textbf{Solution}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\square$}
+\newtheorem*{solWP}{\textbf{Solution}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\square$}
+\newtheorem*{hint}{\textbf{Hints}}}
+
+\renewcommand*{\theexer}{\arabic{exer}}
+\renewcommand*{\thesol}{\arabic{sol}}
+\renewcommand*{\thesolWP}{\arabic{solWP}}
+\renewcommand*{\thehint}{\arabic{hint}}
+
+%%% Ignorer les solutions
+\excludecomment{sol}
+\excludecomment{solWP}
+\excludecomment{hint}
+
+\newcommand{\headHW}[4]{%
+	\noindent \hrulefill \\
+	MATH-#1 #2 \\
+	#3 #4
+	
+}
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Introduction to Real Analysis \hfill Pierre-Olivier Paris{\'e}\\
+	Homework 02 \hfill Fall 2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+	\noindent Due date: 20-09-2021 1:20pm \hfill Total: \hspace{0.3cm}/70.
+	
+\vspace*{0.5cm}
+
+	\bgroup \renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+\centering
+\begin{tabular}{|m{1.5cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|}
+\hline
+Exercise & 1 (10) & 2 (5) & 3 (5) & 4 (5) & 5 (5) & 6 (10) & 7 (5) & 8 (10) & 9 (5) & 10 (10) \\
+\hline
+Score & & & & & & & & & &  \\\hline
+\end{tabular}
+\caption{Scores for each exercises}
+\end{table}
+\egroup
+	
+\vspace*{0.5cm}
+
+{\bf Instructions:} You must answer all the questions below and send your solution by email (to \url{parisepo@hawaii.edu}). If you decide to not use {\LaTeX} to hand out your solutions, please be sure that after you scan your copy, it is clear and readable. Make sure that you attached a copy of the homework assignment to your homework. No late homework will be accepted. No format other than PDF will be accepted. Name your file as indicated in the syllabus.
+
+\section{Writing problems}
+For each of the following problems, you will be asked to write a clear and detailed proof. You will have the chance to rewrite your solution in your semester project after receiving feedback from me.
+
+\begin{exer}
+(10 pts)
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Let $\{ [a_n , b_n ] \, : \, n \geq 1\}$ be a family of closed intervals such that $[a_1 , b_1] \supset [a_2 , b_2] \supset [a_3, b_3] \supset \cdots$. Show that there is a $c \in \bR$ such that $c \in [a_n , b_n ]$ for all $n \geq \bN$. Follow the following steps to prove it:
+	\begin{enumerate}[label=\textbf{(\roman*)}]
+	\item Prove that for any $n, m \geq 1$, $a_n \leq b_m$. [hint: put $M := \max \{ n , m \}$.]
+	\item Show that $\sup \{ a_n\, : \, n \geq 1 \}$ exists.
+	\item Show that $c = \sup \{ a_n \, : \, n \geq 1\}$ satisfies the requirement.	
+	\end{enumerate}
+\item Use this last result to prove that the set $\bR$ is uncountable. [Hint: Show that any function $f : \bN \ra \bR$ can't be surjective. To do so, construct a sequence of closed intervals such that $f(n) \not\in [a_n , b_n]$ with $a_n < b_n$.]
+\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Let $A := \{ a_n \, : \, n \geq 1 \}$. By the hypothesis, we know that $a_1 \leq a_2 \leq a_3 \leq \cdots$, $b_1 \geq b_2 \geq b_3 \geq \cdots$ and $a_n \leq b_n$ for any $n \geq 1$. In fact, if $n, m \geq 1$ and $M := \max \{ n, m \}$, then
+	\begin{align*}
+	a_n \leq a_M \leq b_M \leq b_m .
+	\end{align*}
+So we have $a_n \leq b_m$ for any $n, m \geq 1$. This implies that for any $m \geq 1$, the number $b_m$ is an upper bound for $A$. So, by AC, $\sup A$ exists. Put $c := \sup A$. We will verify that $c$ satisfy all the requirements. Since $c$ is the supremum of $A$, we have $a_n \leq c$ for any $n \geq 1$. Also, since $b_m$ is an upper bound of $A$ for any $m \geq 1$, by the definition of the supremum, we get that $c \leq b_m$ for any $m \geq 1$. Thus, for any $n \geq 1$, we get $a_n \leq c \leq b_n$. In other words, this means $c \in [a_n , b_n]$ for any $n \geq 1$.
+\item Let $f : \bN \ra \bR$ be a function. Since $f(1) \in \bR$, there are real numbers $a_1$ and $b_1$ such that $a_1 < b_1 < f(1)$ (just take $a_1 = f(1) - \varepsilon$ and $b_1 = f(1) - \varepsilon/2$ for $\varepsilon > 0$). Now let $a_2, b_2 \in \bR$ such that $a_2 < b_2$ and $[a_2, b_2] \subset [a_1 , b_1]$ and $f(2) \not\in [a_2 , b_2]$. This is possible because
+	\begin{itemize}
+	\item if $f(2) \not\in (a_1 , b_1)$, then take $a_2 = a_1/2$ and $b_2 = b_1/2$.
+	\item if $f(2) \in (a_1 , b_1)$, then by the density of the rational numbers, there are rational numbers $r, \tilde{r}$ such that $a_1 < r < \tilde{r} < f(2) < b_1$. Set $a_2 = r$ and $b_2 = \tilde{r}$.
+	\end{itemize}
+Continue in this fashion to construct a sequence of intervals $[a_n , b_n]$ such that 
+	\begin{itemize}
+	\item $[a_1 , b_1] \supset [a_2 , b_2] \supset [a_3, b_3] \supset \cdots$ and
+	\item $f(n) \not\in [a_n , b_n]$ for every $n \geq 1$.
+	\end{itemize}
+By a), there is some $c \in \bR$ such that $c \in [a_n , b_n ]$ for every $n \geq 1$. This implies that $c \neq f(n)$ for every $n \geq 1$ and so $f$ is not surjective.
+\end{enumerate}
+\end{sol}
+
+\begin{exer}
+(5 pts)
+Prove that if $a_n \ra A$, then $|a_n| \ra |A|$.
+\end{exer}
+\begin{sol}
+Let $a_n \ra A$. This means that for any $\varepsilon > 0$, there exists a $N \in \bN$ such that if $n \geq N$, then $|a_n - A| < \varepsilon$. Let $\varepsilon > 0$ be arbitrary. We know, from the definition of convergence, that there is a $N \in \bN$ such that if $n \geq N$, then $|a_n - A| < \varepsilon$. Let $n \geq N$, then, by the properties of the absolute value, we have
+	\begin{align*}
+	| |a_n | - |A|| \leq |a_n - A| < \varepsilon .
+	\end{align*}
+So, for any $\varepsilon > 0$, there is a $N \in \bN$ such that if $n \geq N$, then $||a_n| - |A|| < \varepsilon$. Since $\varepsilon > 0$ was arbitrary, we conclude that $|a_n| \ra |A|$.
+\end{sol}
+
+\begin{exer}
+(5 pts)
+Let $(a_n)$, $(b_n)$, and $(c_n)$ be sequences of real numbers. Prove that if $a_n \ra L$, $b_n \ra L$, and $a_n \leq c_n \leq b_n$, then $c_n \ra L$.
+\end{exer}
+\begin{sol}
+Let $(a_n)$, $(b_n)$ and $(c_n)$ be sequences such that $a_n \ra L$ and $b_n \ra L$. Suppose also that $a_n \leq c_n \leq b_n$ for any $n \geq 1$. We want to prove that $c_n \ra L$. Let $\varepsilon > 0$. Then, from the definition of convergence, there are $N_A , N_B \in \bN$ such that
+	\begin{itemize}
+	\item if $n \geq N_A$, then $|a_n - L| < \varepsilon$ and;
+	\item if $n \geq N_B$, then $|b_n - L| < \varepsilon$.
+	\end{itemize}
+These last inequalities are equivalent to $-\varepsilon < a_n - L < \varepsilon$ for $n \geq N_A$ and $-\varepsilon < b_n - L < \varepsilon$ for $n \geq N_B$. The goal is to prove that $|c_n - L| < \varepsilon$. Now, from the hypothesis, we know that $a_n \leq c_n \leq b_n$ for any $n \geq 1$. So, for such $n$, we have
+	\begin{align*}
+	a_n - L \leq c_n - L \leq b_n - L
+	\end{align*}
+Take $N := \max \{ N_A , N_B \}$. Then, if $n \geq N \geq N_A$, we get
+	\begin{align*}
+	a_n - L > -\varepsilon \quad \Ra \quad c_n - L > -\varepsilon .
+	\end{align*}
+Also, if $n \geq N \geq N_B$, we get
+	\begin{align*}
+	b_n - L < \varepsilon \quad \Ra \quad c_n - L < \varepsilon .
+	\end{align*}
+So, combining these last two inequalities, if $n \geq N$, then $-\varepsilon < c_n - L < \varepsilon$. This is the same thing as $|c_n - L| < \varepsilon$. Thus, we have just shown that if $\varepsilon > 0$, then there is a $N \in \bN$ such that if $n \geq N$, then $|c_n - L| < \varepsilon$. Since $\varepsilon$ was arbitrary, we conclude that $c_n \ra L$.
+\end{sol}
+
+
+\begin{exer}
+(5 pts)
+Prove that if $a_n \ra A$ and $a_n \geq 0$ for all $n \geq 1$, then $\sqrt{a_n} \ra \sqrt{A}$. Follow the following steps to prove it:
+	\begin{enumerate}
+	\item Consider the case $A = 0$.
+	\item Suppose that $A \neq 0$. Show that there is a $N_1 \in \bN$ such that if $n \geq N_1$, then $\sqrt{a_n} \geq \sqrt{|A|/2}$. [Hint: use the definition of convergence of $(a_n)_{n \geq 0}$ with a clever choice of $\varepsilon$ and use the properties of the absolute value.]
+	\item Use the convergence of $(a_n)$ again to find a $N_2$ such that $|a_n - A| < \frac{3}{4} \frac{\varepsilon}{\sqrt{|A|}}$. 
+	\item Express $\sqrt{a_n} - A$ as $\frac{a_n - A}{\sqrt{a_n} + \sqrt{A}}$ and put $N = \max \{ N_1 , N_2 \}$. Conclude.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+Let $A= 0$ and $\varepsilon > 0$. Then, $a_n \ra 0$ and this implies that there is a $N \in \bN$ such that if $n \geq N$, then $|a_n| < \varepsilon^2$. We know that $a_n \geq 0$, then $|a_n| = a_n$. Taking the square root in the last expression gives $\sqrt{a_n} < \varepsilon$ if $n \geq N$. So, for $\varepsilon > 0$, there is a $N \in \bN$ such that if $n \geq N$, then $|\sqrt{a_n}| < \varepsilon$. In other words, $\sqrt{a_n} \ra \sqrt{0} = 0$.
+
+Let $A \neq 0$ and $\varepsilon > 0$. For $n \geq 1$, we have
+	\begin{equation}
+	\sqrt{a_n} - \sqrt{A} = \frac{a_n - A}{\sqrt{a_n} + \sqrt{A}} .  \label{eq:sqrt}
+	\end{equation}
+Since $a_n \ra A$ with $A \neq 0$, there is a $N_1 \in \bN$ such that if $n \geq N$, then $|a_n - A| < \frac{|A|}{2}$ (take $\varepsilon = |A|/2 > 0$ in the definition of convergence). Now, by the properties of the absolute value, we have $|A| - |a_n| \leq ||a_n| - |A|| \leq |a_n - A|$. So, if $n \geq N_1$, then
+	\begin{align*}
+	|A| - |a_n| < \frac{|A|}{2} \quad \Ra \quad \frac{|A|}{2} < |a_n| .
+	\end{align*}
+Taking the square root on each side of the inequality, we obtain $\sqrt{a_n} > \sqrt{\frac{|A|}{2}}$ if $n \geq N_1$. Since $\sqrt{2} < 2$, we also see that $\sqrt{|A|/2} \geq \sqrt{|A|}{2}$. So, 
+	\begin{equation}
+	n \geq N_1 \quad \Ra \quad \sqrt{a_n} \geq \frac{\sqrt{|A|}}{2} . \label{eq:lowerbound}
+	\end{equation}
+
+By the definition of the convergence of the sequence $(a_n)$, there is a $N_2 \in \bN$ such that if $n \geq N_2$, then $|a_n - A| < \frac{3}{4} \sqrt{|A|} \varepsilon$. Put $N := \max \{ N_1 , N_2 \}$. Then, using \eqref{eq:sqrt}, if $n \geq N$, then
+	\begin{align*}
+	\left| \sqrt{a_n} - \sqrt{A} \right| = \left| \frac{a_n - A}{\sqrt{a_n} + \sqrt{A}} \right| = \frac{|a_n - A|}{\sqrt{a_n} + \sqrt{A}}. 
+	\end{align*}
+Now, since $n \geq N \geq N_1$, we know that $\sqrt{a_n} \geq \sqrt{|A|}/2$ and so $\sqrt{a_n} + \sqrt{A} \geq \frac{3}{4} \sqrt{|A|}$. Using this, we can bound $|\sqrt{a_n} - \sqrt{A}|$ by
+	\begin{align*}
+	\frac{|a_n - A|}{\frac{3}{4} \sqrt{|A|}}
+	\end{align*}
+and since $n \geq N \geq N_2$, we also have
+	\begin{align*}
+	\frac{|a_n - A|}{\frac{3}{4} \sqrt{|A|}} < \frac{\frac{3}{4} |A| \varepsilon}{\frac{3}{4} |A|} = \varepsilon .
+	\end{align*}
+Thus, we have just shown that if $\varepsilon > 0$ is arbitrary, then there exists a $N \in \bN$ such that $|\sqrt{a_n} - \sqrt{A}| < \varepsilon$. We then conclude that $\sqrt{a_n} \ra \sqrt{A}$.
+\end{sol}
+
+\begin{exer}
+(5 pts)
+For each sequence $(a_n)_{n = 1}^\infty$, define the sequence $(\sigma_n)_{n = 1}^\infty$ by
+	\begin{align*}
+	\sigma_n := \frac{a_1 + a_2 + \cdots + a_n}{n} \quad (n \geq 1 ) .
+	\end{align*}
+Prove that if $a_n \ra A$, then $\sigma_n \ra A$. Find an example of a divergent sequence $(a_n)$ such that $(\sigma_n)_{n = 1}^\infty$ converges.
+\end{exer}
+\begin{sol}
+Let $a_n \ra A$. We want to prove that $\sigma_n \ra A$. This means that for any $\varepsilon > 0$, there is a $N \in \bN$ such that if $n \geq N$, then $|\sigma_n - A| < \varepsilon$. Let $\varepsilon > 0$ be arbitrary. From the definition of the convergence of $(a_n)$, there exists a $N_1 \in \bN$ such that if $n \geq N_1$, then $|a_n - A| < \varepsilon/2$. So, we get
+	\begin{align*}
+	|\sigma_n - A| = \left| \frac{\sum_{k = 1}^n a_k}{n} - A \right| = \left| \frac{\sum_{k = 1}^n a_k - nA}{n} \right|
+	\end{align*}
+Separate the sum from $k= 1$ to $k= N_1 - 1$ and from $k= N_1$ to $k = n$ and use triangle inequality twice to obtain
+	\begin{align*}
+	\left| \frac{\sum_{k = 1}^n a_k - nA}{n} \right| \leq \frac{\sum_{k = 1}^{N_1 - 1} |a_k - A|}{n} + \frac{\sum_{k = N_1}^n |a_k - A|}{n} .
+	\end{align*}
+
+We know that a convergence sequence is bounded. So, there is a $M > 0$ such that $|a_k| \leq M$ for any $k \geq 1$. Then 
+	\begin{align*}
+	|a_k - A| \leq |a_k| + |A| \leq M + |A| \quad \forall k \geq 1 .
+	\end{align*}
+Also, when $k \geq N_1$, then $|a_k - A| < \varepsilon/2$. Also, by the AP, there is a natural number $N_2 \in \bN$ such that $N_2 (\varepsilon /2) > (N_1 - 1) (M + |A|)$. 
+
+Take $N := \max \{ N_1 , N_2 \}$ and $n \geq N$. Putting everything together, we obtain
+	\begin{align*}
+	| \sigma_n - A | \leq \frac{(N_1 - 1) (M + |A|)}{n} + \sum_{k = N_1}^n \frac{\varepsilon/2}{n} < \frac{(N_1 - 1) (M + |A|)}{N_2} + (n - N_1)(\varepsilon/2) /n  < \varepsilon/2 + \varepsilon/2 .
+	\end{align*}
+Then, for any $\varepsilon$, we just proved that there is a $N \in \bN$ such that if $n \geq N$, then $|\sigma_n - A| < \varepsilon$. We conclude that $\sigma_n \ra A$.
+
+Take $a_n = (-1)^n$. Then $(a_n)$ diverge, but $\sigma_n \ra 0$.
+\end{sol}
+
+\section{Homework problems}
+%\begin{exer}
+%Prove that
+	%\begin{enumerate}[label=\textbf{\alph*)}]
+	%\item $\bigcap_{n \geq 1} [-1/n , 1/n ] = \{ 0 \}$.
+	%\item $\bigcup {n \geq 1} [-n , n ] = \bR$.
+	%\end{enumerate}
+%\end{exer}
+
+\begin{exer}
+(10 pts)
+Use the definition of convergence to prove that each of the following sequences converges.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item $(a_n )_{n = 1}^\infty$ given by $a_n = 5 + 1/n$ for $n \geq 1$.
+	\item $(a_n)_{n = 1}^\infty$ given by $a_n = \frac{3n}{2n + 1}$ for $n \geq 1$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Take $A = 5$. Let $\varepsilon > 0$ be arbitrary. Then, for any $n \geq 1$, we have
+	\begin{align*}
+	|5 - 1/n - 5| = |-1/n| = 1/n .
+	\end{align*}
+By the AP ($x = \varepsilon$ and $y= 1$), there is a $N_0 \in \bN$ such that $N_0 \varepsilon > 1$ and so $1/N_0 < \varepsilon$. Take $N = N_0$, so, if $n \geq N_0$, we have
+	$$
+	|5 - 1/n - 5| = 1/n \leq 1/N_0 < \varepsilon .
+	$$
+Since $\varepsilon > 0$ was arbitrary, we just proved that for any $\varepsilon > 0$, there is a $N \in \bN$ such that $|a_n - 5| < \varepsilon$. Thus, $a_n \ra 5$.
+\item Take $A = 3/2$. Let $\varepsilon > 0$. We have
+	\begin{align*}
+	\left| \frac{3n}{2n + 1} - \frac{3}{2} \right| = \left| \frac{6n - 6n - 3}{2 (2n + 1)} \right| = \frac{3}{2 (2n + 1)} .
+	\end{align*}
+By the AP ($x = \varepsilon$ and $y = 1/2$), there is a $N_0 \in \bN$ such that $(2N_0 + 1)\varepsilon > \frac{1}{2}$ and so $\frac{1}{2 (2N_0 + 1)} < \varepsilon$. Take $N = N_0$, so if $n \geq N_0$, then we have $2 (2n + 1) \geq 2(2N_0 + 1)$ and
+	\begin{align*}
+	\left| \frac{3n}{2n + 1} - \frac{3}{2} \right| = \frac{3}{2 (2n + 1)}  \leq \frac{1}{2 (2N_0 + 1)} < \varepsilon .
+	\end{align*}
+Since $\varepsilon > 0$ was arbitrary, we just proved that for any $\varepsilon > 0$, there is a $N \in \bN$ such that $|a_n - 3/2| < \varepsilon$. Thus $a_n \ra 3/2$.
+\end{enumerate}
+\end{sol}
+
+\begin{exer}
+(5 pts)
+Prove that the sequence $(a_n)_{n = 1}^\infty = \Big( \frac{2n + 1}{n} \Big)_{n = 1}^\infty$ is a Cauchy sequence.
+\end{exer}
+\begin{sol}
+Let $\varepsilon > 0$ be arbitrary. For $n , m \geq 1$, we have
+	\begin{align*}
+	\left| \frac{2n + 1}{n} - \frac{2m + 1}{m} \right| = \left| \frac{2nm + m - 2nm - n}{nm} \right| = \frac{|m - n|}{nm} .
+	\end{align*}
+By the triangle inequality, $|m - n|/mn \leq (m + n)/mn = \frac{1}{n} + \frac{1}{m}$ and so
+	\begin{align*}
+	\left| \frac{2n + 1}{n} - \frac{2m + 1}{m} \right| \leq \frac{1}{n} + \frac{1}{m} .
+	\end{align*}
+By the AP ($x = \varepsilon $ and $y = 2$), there is a $N_0 \in \bN$ such that $N_0 \varepsilon > 2$, so that $\frac{1}{N_0} < \varepsilon /2$. Take $N = N_0$ and let $n, m \geq N_0$. Then, we have
+	\begin{align*}
+	\left| \frac{2n + 1}{n} - \frac{2m + 1}{m} \right| \leq 1/n + 1/m < \varepsilon / 2 + \varepsilon / 2 = \varepsilon .
+	\end{align*}
+Since $\varepsilon > 0$ was arbitrary, we just proved that for any $\varepsilon > 0$, there exists a $N \in \bN$ such that if $n, m > N$, then $|a_n - a_m| < \varepsilon$. Thus the sequence is Cauchy.
+\end{sol}
+
+\begin{exer}
+(10 pts)
+Prove that each of the following sequence diverges.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item $(a_n)_{n = 1}^\infty = ( (-1)^n )_{n = 1}^\infty$.
+	\item $(a_n)_{n = 1}^\infty = ( \sin (\frac{2n + 1}{2} \pi) )_{n = 1}^{\infty}$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Suppose that the sequence converges to $A$. Let $\varepsilon = |A|$, if $A \neq 0$ and $\varepsilon = 1/2$, if $A = 0$, in the definition of convergence of a sequence. Then there exists a $N \in \bN$ such that if $n \geq N$, then $|a_n - A| < \varepsilon$. 
+
+If $A \neq 0$ and if $n \geq N$, then, by the properties of the absolute value, we have
+	\begin{align*}
+	|a_n - A| < \varepsilon \iff -|A| < a_n - A < |A| \iff A - |A| < (-1)^n < A + |A| .
+	\end{align*}
+	\begin{itemize}
+	\item If $A > 0$, then $A - |A| = 0$ and for any $n \geq N$, $0 < (-1)^n$ which is false if $n$ is odd.
+	\item If $A < 0$, then $A + |A| = 0$ and for any $n \geq N$, $(-1)^n < 0$ which is false if $n$ is even.
+	\end{itemize}
+	
+	If $A = 0$, then $|(-1)^n| < 1/2$ and so $1 < 1/2$ a contradiction.
+	
+Thus, the sequence $(a_n)_{n = 1}^\infty$ is not convergent.
+\item We see that $\sin (4n + 1)\pi/2 = (-1)^n$. So, from a), it is not a convergent sequence.
+\end{enumerate}
+\end{sol}
+
+
+\begin{exer}
+(5 pts)
+Give an examples of two sequences $(a_n)$ and $(b_n)$ such that $(a_n)$ and $(b_n)$ don't converge, but $(a_n + b_n)$ converge.
+\end{exer}
+\begin{sol}
+Let $a_n = (-1)^n$ and $b_n = (-1)^{n + 1}$, then $a_n + b_n = 0$. The sequences $(a_n)_{n = 1}^\infty$ and $(b_n)_{n = 1}^\infty$ both diverge, but $(a_n + b_n)_{n = 1}^\infty$ converge.
+\end{sol}
+
+\begin{exer}
+(10 pts)
+With the limit operations and the writing problems, find the limit of the following sequence with general term
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item $\frac{n^2 + 4n}{n^2 - 5}$.
+	\item $\frac{n}{n^2 - 3}$.
+	\item $\frac{\cos n}{n}$. [You can use what you know on the cosine function.]
+	\item $\Big( \sqrt{4 - \frac{1}{n}} - 2 \Big) n$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item We can't use the limit rules directly. We rearrange the expression:
+	\begin{align*}
+	\frac{n^2 + 4n}{n^2 - 5} = \frac{1 + 4/n}{1 - 5/n^2} .
+	\end{align*}
+Now, $1/n \ra 0$, so $1 + 4/n \ra 1$. Also, $1/n^2 \ra 0$ according to the product rule and so $1 - 5/n^2 \ra 1$. Thus, by the quotient rule, we get
+	\begin{align*}
+	\lim_{n \ra \infty} \frac{n^2 + 4n}{n^2 - 5} = \frac{1}{1} = 1.
+	\end{align*}
+\item Again, we can't use the limit rules directly. We rearrange the expression:
+	\begin{align*}
+	\frac{n}{n^2 - 3} = \Big( \frac{1}{n}\Big)  \Big( \frac{1}{1 - 3/n^2} \Big) .
+	\end{align*}
+We know that $1/n \ra 0$ and $1/n^2 \ra 0$. So, by the limit rules, $1 - 3/n^2 \ra 1$. Thus, by the product rule, we get
+	\begin{align*}
+	\lim_{n \ra \infty} \frac{n}{n^2 - 3} = \Big( \lim_{n \ra \infty} \frac{1}{n} \Big) \Big( \lim_{n \ra \infty} \frac{1}{1 - 3/n^2} \Big) = 0 .
+	\end{align*}
+\item We know that $|\cos (x) | \leq 1$ for any $x \in \bR$. So, use a Theorem in the lecture notes with $(a_n) = (1/n)_{n = 1}^\infty$ and $(b_n) = (\cos n )_{n = 1}^\infty$, we have that $a_n b_n \ra 0$ since $1/n \ra 0$. In other words, $\cos (n) /n \ra 0$.
+\item Here we can't apply the limit rules directly. We have to rearrange the expression. We have
+	\begin{align*}
+	\Big( \sqrt{4 - \frac{1}{n}} - 2 \Big) n = \frac{(4 - 1/n -4)n}{\sqrt{4 - 1/n} + 2} = \frac{-1}{\sqrt{4 - 1/n} + 2} .
+	\end{align*}
+Now, from the working problems, since $1/n \ra 0$ and so $4 - 1/n \ra 4$, we get that $\sqrt{4 - 1/n} \ra \sqrt{4} = 2$. Thus, from the quotient rule,
+	\begin{align*}
+	\lim_{n \ra \infty} \Big( \sqrt{4 - \frac{1}{n}} - 2 \Big) n = -\frac{1}{2 + 2} = -\frac{1}{4} .
+	\end{align*}
+\end{enumerate}
+\end{sol}
+
+\end{document}

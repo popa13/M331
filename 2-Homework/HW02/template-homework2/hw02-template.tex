@@ -1,0 +1,270 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+
+\usepackage{comment}
+\usepackage{url}
+
+\usepackage{titlesec}
+\titleformat{\section}[frame]
+{\normalfont\scshape}
+{\thesection}{8pt}{\centering}
+
+\usepackage{array}
+
+\pgfplotsset{compat=1.16}
+
+%\usepackage[margin=1cm]{cloze}
+
+\usepackage[thmmarks]{ntheorem}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+    
+\newcommand{\MyC}[1]{\begin{tikzpicture}
+\node (boxIntro) at (0,0) {};
+\node [myboxT](Intro) at (boxIntro){%
+	\begin{minipage}{0.9\textwidth}
+	#1
+	\end{minipage}};
+\end{tikzpicture}}
+
+%%%%  Environnement exer et solutionnaire
+{\theorembodyfont{}
+\theoremstyle{plain}
+\theoremseparator{\textbf{.}}
+\theoremsymbol{}
+\newtheorem{exer}{\textbf{Exercise}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\square$}
+\newtheorem*{sol}{\textbf{Solution}}}
+
+
+\renewcommand*{\theexer}{\arabic{exer}}
+\renewcommand*{\thesol}{\arabic{sol}}
+
+
+\newcommand{\headHW}[4]{%
+	\noindent \hrulefill \\
+	MATH-#1 #2 \\
+	#3 #4
+	
+}
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Introduction to Real Analysis \hfill YOUR FULL NAME\\
+	Homework 02 \hfill Fall 2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+	\noindent Due date: 20-09-2021 1:20pm \hfill Total: \hspace{0.3cm}/70.
+	
+\vspace*{0.5cm}
+
+	\bgroup \renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+\centering
+\begin{tabular}{|m{1.5cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|}
+\hline
+Exercise & 1 (10) & 2 (5) & 3 (5) & 4 (5) & 5 (5) & 6 (10) & 7 (5) & 8 (10) & 9 (5) & 10 (10) \\
+\hline
+Score & & & & & & & & & &  \\\hline
+\end{tabular}
+\caption{Scores for each exercises}
+\end{table}
+\egroup
+	
+\vspace*{0.5cm}
+
+{\bf Instructions:} You must answer all the questions below and send your solution by email (to \url{parisepo@hawaii.edu}). If you decide to not use {\LaTeX} to hand out your solutions, please be sure that after you scan your copy, it is clear and readable. Make sure that you attached a copy of the homework assignment to your homework. No late homework will be accepted. No format other than PDF will be accepted. Name your file as indicated in the syllabus.
+
+\section{Writing problems}
+For each of the following problems, you will be asked to write a clear and detailed proof. You will have the chance to rewrite your solution in your semester project after receiving feedback from me.
+
+\begin{exer}
+(10 pts)
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Let $\{ [a_n , b_n ] \, : \, n \geq 1\}$ be a family of closed intervals such that $[a_1 , b_1] \supset [a_2 , b_2] \supset [a_3, b_3] \supset \cdots$. Show that there is a $c \in \bR$ such that $c \in [a_n , b_n ]$ for all $n \geq \bN$. Follow the following steps to prove it:
+	\begin{enumerate}[label=\textbf{(\roman*)}]
+	\item Prove that for any $n, m \geq 1$, $a_n \leq b_m$. [hint: put $M := \max \{ n , m \}$.]
+	\item Show that $\sup \{ a_n\, : \, n \geq 1 \}$ exists.
+	\item Show that $c = \sup \{ a_n \, : \, n \geq 1\}$ satisfies the requirement.	
+	\end{enumerate}
+\item Use this last result to prove that the set $\bR$ is uncountable. [Hint: Show that any function $f : \bN \ra \bR$ can't be surjective. To do so, construct a sequence of closed intervals such that $f(n) \not\in [a_n , b_n]$ with $a_n < b_n$.]
+\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+
+\begin{exer}
+(5 pts)
+Prove that if $a_n \ra A$, then $|a_n| \ra |A|$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+\begin{exer}
+(5 pts)
+Let $(a_n)$, $(b_n)$, and $(c_n)$ be sequences of real numbers. Prove that if $a_n \ra L$, $b_n \ra L$, and $a_n \leq c_n \leq b_n$, then $c_n \ra L$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+\begin{exer}
+(5 pts)
+Prove that if $a_n \ra A$ and $a_n \geq 0$ for all $n \geq 1$, then $\sqrt{a_n} \ra \sqrt{A}$. Follow the following steps to prove it:
+	\begin{enumerate}
+	\item Consider the case $A = 0$.
+	\item Suppose that $A \neq 0$. Show that there is a $N_1 \in \bN$ such that if $n \geq N_1$, then $\sqrt{a_n} \geq \sqrt{|A|/2}$. [Hint: use the definition of convergence of $(a_n)_{n \geq 0}$ with a clever choice of $\varepsilon$ and use the properties of the absolute value.]
+	\item Use the convergence of $(a_n)$ again to find a $N_2$ such that $|a_n - A| < \frac{3}{4} \frac{\varepsilon}{\sqrt{|A|}}$. 
+	\item Express $\sqrt{a_n} - A$ as $\frac{a_n - A}{\sqrt{a_n} + \sqrt{A}}$ and put $N = \max \{ N_1 , N_2 \}$. Conclude.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+
+\begin{exer}
+(5 pts)
+For each sequence $(a_n)_{n = 1}^\infty$, define the sequence $(\sigma_n)_{n = 1}^\infty$ by
+	\begin{align*}
+	\sigma_n := \frac{a_1 + a_2 + \cdots + a_n}{n} \quad (n \geq 1 ) .
+	\end{align*}
+Prove that if $a_n \ra A$, then $\sigma_n \ra A$. Find an example of a divergent sequence $(a_n)$ such that $(\sigma_n)_{n = 1}^\infty$ converges.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+\section{Homework problems}
+\begin{exer}
+(10 pts)
+Use the definition of convergence to prove that each of the following sequences converges.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item $(a_n )_{n = 1}^\infty$ given by $a_n = 5 + 1/n$ for $n \geq 1$.
+	\item $(a_n)_{n = 1}^\infty$ given by $a_n = \frac{3n}{2n + 1}$ for $n \geq 1$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+\begin{exer}
+(5 pts)
+Prove that the sequence $(a_n)_{n = 1}^\infty = \Big( \frac{2n + 1}{n} \Big)_{n = 1}^\infty$ is a Cauchy sequence.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+\begin{exer}
+(10 pts)
+Prove that each of the following sequence diverges.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item $(a_n)_{n = 1}^\infty = ( (-1)^n )_{n = 1}^\infty$.
+	\item $(a_n)_{n = 1}^\infty = ( \sin (\frac{4n + 1}{2} \pi) )_{n = 1}^{\infty}$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+\begin{exer}
+(5 pts)
+Give an examples of two sequences $(a_n)$ and $(b_n)$ such that $(a_n)$ and $(b_n)$ don't converge, but $(a_n + b_n)$ converge.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+\begin{exer}
+(10 pts)
+With the limit operations and the writing problems, find the limit of the following sequence with general term
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item $\frac{n^2 + 4n}{n^2 - 5}$.
+	\item $\frac{n}{n^2 - 3}$.
+	\item $\frac{\cos n}{n}$. [You can use what you know on the cosine function.]
+	\item $\Big( \sqrt{4 - \frac{1}{n}} - 2 \Big) n$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+\end{document}

@@ -1,0 +1,328 @@
+\documentclass[addpoints, 12pt]{exam}%, answers]
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{arydshln}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{enumitem}
+
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,patterns}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{thmtools}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{pifont}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bQ}{\mathbb{Q}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\DeclareMathOperator{\dom}{dom}
+
+%%%%%% Définitions Theorems and al.
+%\declaretheoremstyle[preheadhook = {\vskip0.2cm}, mdframed = {linewidth = 2pt, backgroundcolor = yellow}]{myThmstyle}
+%\declaretheoremstyle[preheadhook = {\vskip0.2cm}, postfoothook = {\vskip0.2cm}, mdframed = {linewidth = 1.5pt, backgroundcolor=green}]{myDefstyle}
+%\declaretheoremstyle[bodyfont = \normalfont , spaceabove = 0.1cm , spacebelow = 0.25cm, qed = $\blacktriangle$]{myRemstyle}
+
+%\declaretheorem[ style = myThmstyle, name=Th\'eor\`eme]{theorem}
+%\declaretheorem[style =myThmstyle, name=Proposition]{proposition}
+%\declaretheorem[style = myThmstyle, name = Corollaire]{corollary}
+%\declaretheorem[style = myThmstyle, name = Lemme]{lemma}
+%\declaretheorem[style = myThmstyle, name = Conjecture]{conjecture}
+
+%\declaretheorem[style = myDefstyle, name = D\'efinition]{definition}
+
+%\declaretheorem[style = myRemstyle, name = Remarque]{remark}
+%\declaretheorem[style = myRemstyle, name = Remarques]{remarks}
+
+\newtheorem{theorem}{Théorème}
+\newtheorem{corollary}{Corollaire}
+\newtheorem{lemma}{Lemme}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+
+\theoremstyle{definition}
+
+\newtheorem{definition}{Définition}[section]
+\newtheorem{example}{Exemple}[section]
+\newtheorem{remark}{\textcolor{red}{Remarque}}[section]
+\newtheorem{exer}{\textbf{Exercice}}[section]
+
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+
+\begin{document}
+\begin{center}
+\begin{minipage}{0.3\textwidth}
+\begin{Huge}
+\textsc{University of Hawai'i}
+\end{Huge}
+\end{minipage}
+\hfill
+\begin{minipage}{0.12\textwidth}
+\includegraphics[scale=0.05]{../../../manoaseal_transparent.png}
+\end{minipage}
+\end{center}
+
+	\noindent \hrulefill \\
+	MATH-331 Intro. to Real Analysis \hfill Created by Pierre-O. Paris{\'e}\\
+	Final exam \hfill Fall 2021, 12/13/2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+\vspace*{1cm}
+
+\noindent\makebox[\textwidth]{\textbf{Last name:}\enspace \hrulefill}
+\makebox[\textwidth]{\textbf{First name:}\enspace\hrulefill}
+
+\vspace*{1cm}
+\begin{center}
+\gradetable[h][questions]
+\end{center}
+\vspace*{1cm}
+
+{\bf Instructions:} Make sure to write your complete name on your copy. You must answer all the questions below and write your answers directly on the questionnaire. You have 2 hours to complete the exam. When you are done, hand out your copy and you may leave the classroom.
+
+No devises such as a smart phone, cell phone, laptop, or tablet can be used during the exam. You are not allowed to use the lecture notes and the textbook also. You may use your personal cheat sheet on the exam.
+
+Make sure to show all your work. State clearly any theorem or definition you are using in your proofs or your calculations. Make sure you show clearly that all hypothesis required to use a Theorem are satisfied. No credit will be earned for an answer without explanations.
+
+\vspace*{2cm}
+\noindent \textsc{Be the best version of yourself!} \hfill \textsc{Pierre-Olivier Parisé}
+
+\vfill
+
+\noindent\hrulefill\\
+{\textsc{Sign $\uparrow$ to acknowledge you had read and accept the above rules.}}
+
+\qformat{\rule{0.3\textwidth}{.4pt} \begin{large}{\textsc{Question}} \thequestion \end{large} \hspace*{0.2cm} \hrulefill \hspace*{0.1cm} \textbf{(\totalpoints\hspace*{0.1cm} pts)}}
+
+\vspace*{0.5cm}
+
+\newpage
+
+\begin{questions}
+
+\question
+Find the value of the following limits. Write down clearly which properties you are using.
+
+	\begin{parts}
+	\pointformat{(\hspace*{0.35cm}/\thepoints)}
+	\pointname{}
+	\pointsinrightmargin
+	
+	\part[5]
+	$\displaystyle\lim_{n \ra \infty} e^{1/n}$.
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	
+	\part[5]
+	$\displaystyle\lim_{n \ra \infty} x_n$ if $x_1 = 2$ and $x_n = 2 - 1/x_{n-1}$ for $n \geq 2$.
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	
+	\newpage
+	
+	\part[5]
+	$\displaystyle\lim_{x \ra 0} \frac{\sin (x^2)}{2x}$. (You won't be credited if you use l'Hopital's Rule.)
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	
+	\part[5]
+	$\displaystyle\lim_{n \ra \infty} \displaystyle \sum_{k= 1}^n \frac{k \sin (k^2/n^2)}{n^2}$. (Simplify your final answer as much as you can.)
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	\end{parts}
+
+\newpage
+
+\question
+Answer the following questions. State all the hypothesis of the Theorem you are using and write down clearly which properties you are using.
+
+	\begin{parts}
+	\pointformat{(\hspace*{0.35cm}/\thepoints)}
+	\pointname{}
+	\pointsinrightmargin
+	\part[10]
+	Using the Fundamental Theorem of Calculus, compute the derivative of the function $F(x) = \displaystyle\int_{\cos x}^{\sin x} \sqrt{1 - t^2} \, dt$ where $x \in [0, \pi/2]$. Simplify your answer as much as you can.
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	
+	\newpage
+	
+	
+	\part[5]
+	Find $g'(5)$ if $g$ is the inverse of the function $f(x) = x^3 + 2x + 2$.
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	
+	\part[5]
+	Show that the equation $\cos (2x) = x$ has exactly one solution in the interval $[0, \pi/4 ]$.
+	\begin{solution}[\stretch{2}]
+	
+	\end{solution}
+	\end{parts}
+
+\newpage
+
+\question
+Let $A$ and $B$ be two non-empty subsets of $\bR$. Give a proof or, if it's false, give a counter-example to the following statements.
+	
+	\begin{parts}
+	\pointformat{(\hspace*{0.35cm}/\thepoints)}
+	\pointname{}
+	\pointsinrightmargin
+	
+	\part[10]
+	If $S \subseteq A$ and $S$ is nonempty, then $\inf A \leq \inf S$.
+		
+	\part[10]
+	If $A \cap B \neq \varnothing$, then $\sup (A \cap B ) = \max \{ \sup A , \sup B \}$.
+	\end{parts}
+
+\newpage
+
+\question
+Let $a > 0$. We say that a function $f : (-a, a) \ra \bR$ is
+	\begin{itemize}
+	\item \textbf{odd} if $f(-x) = -f(x)$ for any $x \in (-a, a)$;
+	\item \textbf{even} if $f(-x) = f(x)$ for any $x \in (-a, a)$.
+	\end{itemize} 
+
+Suppose $f : (-a, a) \ra \bR$ is a differentiable function on $(-a, a)$.
+	\begin{parts}
+	\pointformat{(\hspace*{0.35cm}/\thepoints)}
+	\pointname{}
+	\pointsinrightmargin
+	
+	\part[10]
+	Show that the function $f$ is even if, and only if, $f'$ is odd.
+	
+	\part[10]
+	Show that the function $f$ is odd if, and only if, $f'$ is even and $f(0) = 0$.
+	\end{parts}
+	
+\newpage
+	
+\question[20]
+\noaddpoints
+Answer the following questions with \textbf{True} or \textbf{False}. Write down you answers on the line at the end of each question. Justify briefly your answer in the space after the statement of the problem.
+
+	\begin{parts}
+	\pointformat{(\hspace*{0.35cm}/ \thepoints)}
+	\pointname{}
+	\pointsinrightmargin
+	
+	\part[4]
+	Any subset of the real numbers has a supremum.
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	\answerline[False]
+	
+	\part[4]
+	If $f(x) = 2x$ when $x \in \bQ$ and $f(x) = -x$ if $x \not\in \bQ$, then $f$ has a limit at $x = 1$.
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	\answerline[False]
+	
+	\part[4]
+	The sequence $(x_n)_{n = 1}^\infty$ defined by $x_n = (-1)^n$ has a convergent subsequence.
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	\answerline[True]
+	
+	\part[4]
+	If $f$ is differentiable on $(0, 2)$, if $f(1) = 1$, $f'(1) = 2$, and if $g(x) = f(x^2) \cos (\pi x)$, then $g'(1) = -2$.
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	\answerline[Vrai]
+	
+	\part[4]
+	If $f : [a, b] \ra \bR$ and $g : [c, d] \ra [a, b]$ are two continuous functions, then $f \circ g$ is Riemann integrable on $[a, b]$.
+	\begin{solution}[\stretch{1}]
+	
+	\end{solution}
+	\answerline[Faux]
+	\end{parts}
+	
+\end{questions}
+
+\end{document}

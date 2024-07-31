@@ -1,0 +1,527 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+
+\usepackage{comment}
+\usepackage{url}
+\usepackage{calc}
+
+\usepackage{titlesec}
+\titleformat{\section}[frame]
+{\normalfont\scshape}
+{\thesection}{8pt}{\centering}
+
+\usepackage{array}
+
+\pgfplotsset{compat=1.16}
+
+%\usepackage[margin=1cm]{cloze}
+
+\usepackage[thmmarks]{ntheorem}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cT}{\mathcal{T}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+    
+\newcommand{\MyC}[1]{\begin{tikzpicture}
+\node (boxIntro) at (0,0) {};
+\node [myboxT](Intro) at (boxIntro){%
+	\begin{minipage}{0.9\textwidth}
+	#1
+	\end{minipage}};
+\end{tikzpicture}}
+
+%%%%  Environnement exer et solutionnaire
+{\theorembodyfont{}
+\theoremstyle{plain}
+\theoremseparator{\textbf{.}}
+\theoremsymbol{}
+\newtheorem{exer}{\textbf{Exercise}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\square$}
+\newtheorem*{sol}{\textbf{Solution}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\qed$}
+\newtheorem*{solWP}{\textbf{Solution}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\qed$}
+\newtheorem*{hint}{\textbf{Hints}}}
+
+\renewcommand*{\theexer}{\arabic{exer}}
+\renewcommand*{\thesol}{\arabic{sol}}
+\renewcommand*{\thesolWP}{\arabic{solWP}}
+\renewcommand*{\thehint}{\arabic{hint}}
+
+%%% Ignorer les solutions
+%\excludecomment{sol}
+\excludecomment{solWP}
+\excludecomment{hint}
+
+\newcommand{\headHW}[4]{%
+	\noindent \hrulefill \\
+	MATH-#1 #2 \\
+	#3 #4
+	
+}
+
+\makeatletter
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\newcommand{\arc@char}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}%
+
+\newcommand{\arc}[1]{\mathpalette\arc@arc{#1}}
+
+\newcommand{\arc@arc}[2]{%
+  \sbox0{$\m@th#1#2$}%
+  \vbox{
+    \hbox{\resizebox{\wd0}{\height}{\arc@char}}
+    \nointerlineskip
+    \box0
+  }%
+}
+\makeatother
+
+\newcount\QO
+\newcounter{QT}
+\newcounter{QTh}
+\newcounter{QF}
+\newcounter{QFi}
+\newcounter{QS}
+\newcounter{QSe}
+\newcounter{QE}
+\newcounter{QN}
+\newcounter{QTe}
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Introduction to Real Analysis \hfill Created by P.-O. Paris{\'e}\\
+	Homework 05 \hfill Fall 2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+	\noindent Due date: November, 22${}^{\text{th}}$ 1:20pm \hfill Total: \hspace{0.3cm}/65.
+	
+\vspace*{0.5cm}
+
+	\bgroup \renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+\centering
+\begin{tabular}{|m{1.5cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|}
+\hline
+Exercise & 1 (10) & 2 (10) & 3 (5) & 4 (5) & 5 (5) & 6 (10) & 7 (5) & 8 (5) & 9 (5) & 10 (5) \\
+\hline
+Score & & & & & & & & & &  \\\hline
+\end{tabular}
+\caption{Scores for each exercises}
+\end{table}
+\egroup
+	
+\vspace*{0.5cm}
+
+{\bf Instructions:} You must answer all the questions below and send your solution by email (to \url{parisepo@hawaii.edu}). If you decide to not use {\LaTeX} to hand out your solutions, please be sure that after you scan your copy, it is clear and readable. Make sure that you attached a copy of the homework assignment to your homework. 
+
+\noindent If you choose to use {\LaTeX}, you can use the template available on the course website.
+
+\noindent No late homework will be accepted. No format other than PDF will be accepted. Name your file as indicated in the syllabus.
+
+\section{Writing problems}
+For each of the following problems, you will be asked to write a clear and detailed proof. You will have the chance to rewrite your solution in your semester project after receiving feedback from me.
+
+%% ---------------------------------------------
+\begin{exer}
+(10 pts)
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Fix any $\delta > 0$ and let $[a, b]$ be an interval with $a < b$. Find a tagged partition $\cP$ of $[a, b]$ such that $\Vert \cP \Vert < \delta$.
+\item Suppose that $f$ is Riemann integrable. Show that in the definition of the Riemann integral, the number $L$ is unique. [Remark: This is why we gave it the name $\int_a^b f$.]
+\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item By the Archimedean Property, let $N \in \bN$ such that $\beta := \frac{b - a}{N} < \delta$. Define the points $x_i$ for $i = 0, 1, 2, \ldots , N$ as
+	\begin{align*}
+	x_i := a + i \beta .
+	\end{align*}
+Let $\cP := \{ (x_i , [x_{i - 1} , x_i ] \, : \, i = 1 , 2, \ldots , N \}$. 
+
+Then, we see that $x_i - x_{i-1} = \frac{b - a}{N} < \delta$ for any $i = 1 , \ldots , N$. Thus, 
+	\begin{align*}
+	\Vert \cP \Vert = \max \{ x_i - x_{i-1} \, : \, i = 1 , 2, \ldots , N \} = \frac{b - a}{N} < \delta.
+	\end{align*}
+	The partition $\cP$ is the one we were searching for.
+\item Suppose that we have two different numbers $L_1$ and $L_2$ for the Riemann integral of $f$. Let $\varepsilon > 0$. 
+
+Then there is a number $\delta_1 > 0$ such that for any tagged partition $\cP$ of $[a, b]$, if $\Vert \cP \Vert < \delta_1$, then
+	\begin{align*}
+	| S (f , \cP ) - L_1 | < \varepsilon .
+	\end{align*}
+There is also another number $\delta_2 > 0$ such that for any tagged partition $\cP$ of $[a, b]$, if $\Vert \cP \Vert < \delta_2$, then
+	\begin{align*}
+	| S (f, \cP ) - L_2 | < \varepsilon .
+	\end{align*}
+
+Let $\delta := \min \{ \delta_1 , \delta_2 \}$. Let $\cP_0$ be a tagged partition such that $\Vert \cP_0 \Vert < \delta$. This partition exists from the first part of the exercise. Then, we have
+	\begin{align*}
+	| L_1 - L_2 | \leq |L_1 - S (f , \cP_0 ) | + | S (f , \cP_0 ) - L_2 | < 2 \varepsilon .
+	\end{align*}
+Thus, for any $\varepsilon > 0$, we have $0 \leq |L_1 - L_2 | < 2 \varepsilon$. Taking the limit as $\varepsilon \ra 0$, by the Squeeze Theorem for limits, we get $|L_1 - L_2| = 0$ which is equivalent to $L_1 = L_2$ from the property of the absolute value.
+\end{enumerate}
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(10 pts)
+Suppose that $f$ and $g$ are Riemann integrable on the interval $[a, b]$.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item Show that $\int_a^b (f + g) = \int_a^b f + \int_a^b g$.
+	\item Show that if $f(x) \leq g(x)$ for any $x \in [a, b]$, then $\int_a^b f \leq \int_a^b g$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Let $\varepsilon > 0$ and let $\cP$ be a tagged partition of $[a, b]$. Since $f$ and $g$ are Riemann integrable on $[a, b]$, there are numbers $\delta_1 > 0$ and $\delta_2 > 0$ such that
+	\begin{itemize}
+	\item if $\Vert \cP \Vert < \delta_1$, then $|S (f , \cP ) - \int_a^b f | < \varepsilon/2$.
+	\item if $\Vert \cP \Vert < \delta_2$, then $|S (g, \cP ) - \int_a^b g| < \varepsilon/2$.
+	\end{itemize}
+Let $\delta := \min \{ \delta_1 , \delta_2 \}$. Then if $\Vert \cP \Vert < \delta$, then
+	\begin{align*}
+	\Big| S (f + g , \cP ) - \int_a^b f - \int_a^b g \Big| &= \Big| S (f, \cP ) + S (g , \cP ) - \int_a^b f - \int_a^b g \Big| \\
+	& \leq \Big| S (f , \cP ) - \int_a^b f \Big| + \Big| S (g , \cP ) - \int_a^b g \Big| \\
+	& < \varepsilon/2 + \varepsilon/2 = \varepsilon .
+	\end{align*}
+	Thus, $f + g$ is Riemann integrable and the value is $\int_a^b (f + g) = \int_a^b f + \int_a^b g$.
+\item Suppose that $f(x) \leq g(x)$ for any $x \in [a, b]$. Let $\cP$ be a tagged partition of $[a, b]$. By the assumption, we see that
+	\begin{align*}
+	S (f, \cP ) \leq S (g, \cP ) .
+	\end{align*}
+Let $\varepsilon > 0$. Our goal is to show that $\int_a^b f < \int_a^b g + \varepsilon$.
+
+Since $f$ and $g$ are Riemann integrable on $[a , b]$, there are numbers $\delta_1, \delta_2 > 0$ such that
+	\begin{itemize}
+	\item if $\Vert \cP \Vert < \delta_1$, then $|S (f , \cP ) - \int_a^b f | < \varepsilon/2$.
+	\item if $\Vert \cP \Vert < \delta_2$, then $|S (g, \cP ) - \int_a^b g| < \varepsilon/2$.
+	\end{itemize}
+Let $\cP_0$ be a tagged partition of $[a, b]$ such that $\Vert \cP_0 \Vert \leq \min \{ \delta_1 , \delta_2 \}$. Then we have that
+	\begin{align*}
+	- \varepsilon/2 < \int_a^b f - S (f , \cP_0 ) < \varepsilon/2
+	\end{align*}
+and
+	\begin{align*}
+	-\varepsilon /2< S (g, \cP_0 ) - \int_a^b g < \varepsilon/2 .
+	\end{align*}
+Thus, adding together these last inequalities, we get
+	\begin{align*}
+	- \varepsilon < \int_a^b f - \int_a^b g + S (g, \cP_0 ) - S (f, \cP_0 ) < \varepsilon
+	\end{align*}
+However, since $S (f , \cP_0 ) \leq S (g , \cP_0 )$, we have that $S (g, \cP_0 ) - S (f ,\cP_0 ) \geq 0$ and so
+	\begin{align*}
+	\int_a^b f - \int_a^b g \leq \int_a^b f - \int_a^b g + S(g , \cP_0 ) - S (f , \cP_0 ) < \int_a^b f - \int_a^b g + \varepsilon .
+	\end{align*}
+Thus, $\int_a^b f < \int_a^b g + \varepsilon$.
+
+Since this is true for any $\varepsilon > 0$, we can take the limit as $\varepsilon \ra 0$ and get from the Squeeze Theorem for limits that $\int_a^b f \leq \int_a^b g$.
+\end{enumerate}
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f : [a, b] \ra \bR$ be Riemann integrable on $[a, b]$ and suppose that $|f(x)| \leq M$ for all $x \in [a, b]$. Show that $\int_a^b f \leq M (b - a)$.
+\end{exer}
+\begin{sol}
+By Exercise 2 b), with $g (x) = M$ for any $x \in [a, b]$, we see that
+	\begin{align*}
+	\int_a^b f \leq \int_a^b M .
+	\end{align*}
+Since $M$ is a constant, from a property of the Riemann integral, we see that $\int_a^b M = M (b - a)$. Thus, we get $\int_a^b f \leq M (b - a)$.
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Suppose that $f$ is Riemann integrable on $[a, b]$. Let $( \cP_n )_{n =1}^\infty$ be a sequence of tagged partitions of $[a, b]$ such that the sequence $\lim_{n \ra \infty} \Vert \cP_n \Vert = 0$. Prove that the sequence $( S (f , \cP_n ))_{n = 1}^\infty$ converges to $\int_a^b f$.
+\end{exer}
+\begin{sol}
+Suppose that $f$ is Riemann integral on $[a, b]$. Let $(\cP_n )_{n = 1}^\infty$ be a sequence of tagged partitions of $[a, b]$ such that $\lim_{n \ra \infty} \Vert \cP_n \Vert = 0$. The goal is to show that $\lim_{n \ra \infty} S (f , \cP_n ) = \int_a^b f$, that is for any $\varepsilon > 0$, there is an integer $N \in \bN$ such that if $n \geq N$, then $|S (f, \cP_n ) - \int_a^b f| < \varepsilon$.
+
+Let $\varepsilon > 0$. Since $f$ is Riemann integrable on $[a, b]$, there is a number $\delta > 0$ such that if $\cP$ is a tagged partition of $[a, b]$ and $\Vert cP \Vert < \delta$, then
+	\begin{align*}
+	\Big| S (f , \cP ) - \int_a^b f \Big| < \varepsilon .
+	\end{align*}
+From the assumptions, we know that $\lim_{n \ra \infty} \Vert \cP_n \Vert = 0$. So, let $N \in \bN$ be an integer such that if $n \geq N$, then $\Vert \cP_n \Vert < \delta$. Then, of any $n \geq N$, we have
+	\begin{align*}
+	\Big| S (f, \cP_n ) - \int_a^b f \Big| < \varepsilon .
+	\end{align*}
+This is exactly what we wanted to prove. 
+\end{sol}
+
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f : [a, b] \ra \bR$ be a bounded function. Suppose that $f$ is Riemann integrable on $[a, c]$ for any $c \in (a, b)$. Show that $f$ is Riemann integrable on $[a, b]$. [Hint: Use the Cauchy criterion for integrals.]
+\end{exer}
+\begin{sol}
+Suppose $f$ is bounded in absolute value by $M$. Let $\varepsilon > 0$. Let $\cP_1$ and $\cP_1$ be two tagged partitions of $[a, b]$. We would like to prove that if $\Vert \cP_1 \Vert < \delta $ and $\Vert \cP_2 \Vert < \delta$ for some $\delta$ (to find out), then $|S (f , \cP_1 ) - S (f , \cP_2 ) | < \varepsilon$. 
+
+Select $c \in (a, b)$ such that $b - c < \varepsilon$. We know that $f$ is Riemann integrable on $[a, c]$, so there exists a $\delta > 0$ such that for any tagged partition $\cT_1$, $\cT_2$ of $[a, c]$, if $\Vert \cT_1 \Vert < \delta$ and $\Vert \cT_2 \Vert < \delta$, then $|S (f, \cT_1 ) - S (f , \cT_2 )| < \varepsilon$. 
+
+Let $\cP_1$ and $\cP_2$ be decribed as followed:
+	\begin{align*}
+	\cP_1 := \{ (c_i , [x_{i - 1} , x_i] ) \, : \, i = 1, 2, \ldots  , N_1 \}
+	\end{align*}
+and
+	\begin{align*}
+	\cP_2 := \{ (d_i , [y_{i - 1} , y_i ]) \, : \, i = 1 , 2, \ldots , N_2 \} .
+	\end{align*}
+Suppose that $\Vert \cP_1 \Vert < \delta$ and $\Vert \cP_2 \Vert < \delta$.
+	
+Define $\cP_1^a$, $\cP_1^b$, $\cP_2^a$, and $\cP_2^b$ as followed:
+	\begin{align*}
+	\cP_1^a &:= \{ (c_i , [x_{i - 1} , x_i ]) \in \cP_1 \, : \, [x_{i-1}, x_i] \subset [a, c] \}, \\
+	\cP_1^b & := \{ (c_i , [x_{i - 1}, x_i]) \in \cP_1 \, : \, [x_{i-1}, x_i] \subset [c, b] \},\\
+	\cP_2^a & := \{ (c_i , [y_{i - 1}, y_i]) \in \cP_2 \, : \, [y_{i-1}, y_i] \in [a, c] \} , \\
+	\cP_2^b & := \{ (c_i , [y_{i - 1}, y_i]) \in \cP_2 \, : \, [y_{i-1} , y_i] \subset [c, b] \} .
+	\end{align*}
+Let $N_1^a$, $N_1^b$, $N_2^a$, and $N_2^b$ be the number of elements in the previous sets respectively. Now define $\tilde{\cP}_1^a$, $\tilde{\cP}_1^b$, $\tilde{\cP}_2^a$, and $\tilde{\cP}_2^b$ as followed:
+	\begin{align*}
+	\tilde{\cP}_1^a := \cP_1^a \cup \{(c , [x_{N_1^a} , c])\} \text{,} \quad	\tilde{\cP}_1^b := \cP_1^b \cup \{ (c, [c, x_{N_1^a + 1}] \}, \\
+	\tilde{\cP}_2^a := \cP_2^a \cup \{ (c , [x_{N_2^a} , c] ) \} \text{, } \quad \tilde{\cP}_2^b := \cP_2^b \cup \{ (c , [c, x_{N_2^a + 1}]) \} .
+	\end{align*}
+Then we have that
+	\begin{align*}
+	|S (f, \cP_1 ) - S (f , \cP_2 ) | \leq |S (f, \tilde{\cP}_1^a) - S (f , \tilde{\cP}_2^a ) | + |S (f, \tilde{\cP}_1^b) - S (f, \tilde{\cP}_2^b) | .
+	\end{align*}
+Since $\Vert \cP_1 \Vert < \delta$, $\Vert \cP_2 \Vert < \delta$, $|x_{N_1^a} - c| < \delta$, and $|x_{N_2^a} - c| < \delta$, we see that the norms of $\tilde{\cP}_1^a$ and $\tilde{\cP}_2^a$ do not exceed $\delta$. So we have that $|S (f, \tilde{\cP}_1^a) - S (f , \tilde{\cP}_2^a ) | < \varepsilon$. Also, since $f$ is bounded in absolute value by $M$, we have
+	\begin{align*}
+	|S (f, \tilde{\cP}_1^b)| \leq \sum_{i = N_1^a + 1}^{N_1} |f(c_i)| (x_i - x_{i-1}| \leq M (b - c) < M \varepsilon .
+	\end{align*}
+With a similar argument, we obtain that $|S (f, \tilde{\cP}_2^b)| < M \varepsilon$. Thus, putting all this together, we get
+	\begin{align*}
+	|S (f, \cP_1 ) - S (f, \cP_2)| \leq (2M + 1) \varepsilon .
+	\end{align*}
+Change $\varepsilon$ for $\varepsilon/(2M + 1)$ and we obtain what we wanted to prove. Thus, from the Cauchy critirion, $f$ is Riemann integrable on $[a, b]$.
+\end{sol}
+
+\section{Homework problems}
+Answer all the questions below. Make sure to show your work. When we are asking to show that a function is Riemann integrable on an interval $[a, b]$, you must use the definition or the properties of the Riemann integral presented in sections 6.1 and 6.2 respectively.
+
+\begin{exer}
+(10pts)
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Define the function $f : [a, b] \ra \bR$ by $f(x) = k$ for every $x \in [a, b]$ where $k \in \bR$ is a fixed constant. Show that $f$ is Riemann integrable on $[a, b]$ and that $\int_a^b k \, dx = k ( b-a)$.
+\item Let $f(x) = \sin^2 (x)$ where $x \in [a, b]$ and assume that the function $g(x) := \cos (kx )$ is integrable on $[a, b]$ for any $k \in \bR$. Show that $f$ is Riemann integrable on $[a, b]$.
+\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Let $\varepsilon > 0$ and let $\cP$ be a tagged partition of $[a, b]$ and put $\cP := \{ (c_i , [x_{i - 1}, x_i] ) \, : \, i = 1 , 2, \ldots , N \}$. Then the Riemann sum of $f$ is
+	\begin{align*}
+	S (f, \cP ) = \sum_{i = 1}^N f(c_i) (x_i - x_{i-1}) = k \sum_{i = 1}^N (x_i - x_{i - 1}) = k (b - a) .
+	\end{align*}
+Thus, let $\delta = 1$. We then get that if $\Vert \cP \Vert < 1$, then
+	\begin{align*}
+	| S (f , \cP ) - k (b - a)| = 0 < \varepsilon .
+	\end{align*}
+Thus $f$ is Riemann integrable on $[a, b]$ and $\int_a^b f = k (b - a)$.
+\item By a trigonometric identity, we have that
+	\begin{align*}
+	\sin^2 (x) = \frac{1 - \cos (2x)}{2} .
+	\end{align*}
+Thus we see that
+	\begin{align*}
+	\int_a^b \sin^2 (x) \, dx = \int_a^b \frac{1}{2} - \frac{\cos (2x )}{2} \, dx .
+	\end{align*}
+Since the function $h(x) = 1/2$ and $g(x) = \cos (2x)$ are integrable on $[a, b]$, from the properties of the Riemann integral, we obtain that $1/2 - (1/2)\cos (2x )$ is Riemann integrable on $[a, b]$. So $\sin^2$ is also Riemann integrable.
+\end{enumerate}
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Show that the function $f : [0, 1] \ra \bR$ defined by
+	\begin{align*}
+	f(x) := \begin{cases}
+	1 & \text{, if } 0 \leq x < 1/2 \\
+	0 & \text{, if } 1/2 \leq x \leq 1 
+	\end{cases}
+	\end{align*}
+is Riemann integrable on $[0, 1]$.
+\end{exer}
+\begin{sol}
+We will show that $\int_0^1 f = 1/2$. 
+
+Let $\varepsilon > 0$. Let $\cP := \{ (c_i , [x_{i-1} , x_i ]) \, : \, i = 1 , 2, \ldots , N \}$ be a tagged partition of $[a, b]$. We will create two disjoint subfamily of tagged intervals. We define $\cP_1$ as the family of tagged intervals $(c_i , [x_{i - 1} , x_i] ) \in \cP$ such that $c_i < 1/2$ and we define $\cP_2$ as the family of tagged intervals $(c_i , [x_{i-1} , x_i]) \in \cP$ such that $c_i \geq 1/2$. Then $\cP = \cP_1 \cup \cP_2$ and $\cP_1 \cap \cP_2 = \varnothing$. This implies that
+	\begin{align*}
+	S (f , \cP ) = S (f, \cP_1) + S (f , \cP_2 ).
+	\end{align*}
+Let $N_1$ be the number of elements in $\cP_1$ and $N_2$ be the number of elements in $\cP_2$, then
+	\begin{align*}
+	S (f, \cP ) = \sum_{i = 1}^{N_1} f(c_i) (x_i - x_{i-1}) + \sum_{i = 1}^{N_2} f(c_{i + N_1}) (x_{i + N_1} - x_{i + N_1 -1}) .
+	\end{align*}
+For $i = 1 , 2, \ldots , N_1$, we have $f(c_i) = 1$ and for $i = 1, 2, \ldots , N_2$, $f(c_{i + N_1}) = 0$. So
+	\begin{align*}
+	S (f , \cP ) = \sum_{i = 1}^{N_1} (x_{i} - x_{i - 1}) = x_{N_1} - x_0 = x_{N_1} .
+	\end{align*}
+So we have
+	\begin{align*}
+	| S(f , \cP ) - 1/2| = |x_{N_1} - 1/2| .
+	\end{align*}
+We want that last expression to be less than $\varepsilon$. Let $\delta = \varepsilon/2$ and suppose that $\Vert \cP \Vert < \delta$. Then the distance from $x_{N_1}$ to $1/2$ is less than the distance from $x_{N_1}$ to $x_{N_1 + 2}$ because $1/2 \leq c_{N_1 + 1} \leq x_{N_1 + 1} < x_{N_1 + 2}$ and so
+	\begin{align*}
+	|x_{N_1} - 1/2| = 1/2 - x_{N_1} \leq x_{N_1 + 2} - x_{N_1} \leq x_{N_1 + 2} - x_{N_1 + 1} + x_{N_1 + 1} - x_{N_1} < 2 \delta = \varepsilon .
+	\end{align*}
+Thus, if $\Vert \cP \Vert < \delta$, then
+	\begin{align*}
+	| S (f, \cP ) - 1/2| = |x_{N_1} - 1/2| < \varepsilon .
+	\end{align*}
+This implies that $f$ is Riemann integrable on $[0, 1]$ and $\int_0^1 f = 1/2$.
+\end{sol}
+
+%-------------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f : [0, 1] \ra \bR$ be defined by $f(x) = 1$ if $x = 1/n$ where $n \in \bN$, and by $f(x) = 0$ if $x \neq 1/n$, $n \in \bN$. Show that $f$ is Riemann integrable on $[0, 1]$.
+\end{exer}
+\begin{sol}
+We will show that $\int_c^1 f = 0$ on each interval $[c, 1]$ where $0 < c < 1$. Then from exercise 5 we can conclude that $f$ is Riemann integrable on $[0, 1]$.
+
+Let $c \in (0, 1)$. There is a integer $n$ such that $1/n < c$ (by AP). Take the smallest integer with this property and call it $N$. This means that if $n > N$, then $1/n < c$ and if $n < N$, then $1/n > c$. 
+
+Let $\varepsilon > 0$. Let $\cP = \{ (c_i , [x_{i - 1} , x_i]) \, : \, i = 1 , 2, \ldots , k \}$. Suppose that $\Vert \cP \Vert < \varepsilon/ N$. If no tag in $\cP$ is equal to $1/n$ for some $n < N$, then $S (f, \cP ) = 0$ because in this case $f(c_i) = 0$.
+
+Suppose that there is at least one $c_i$ such that $f(c_i) = 1/n$ for some $n < N$. Let $\cP_1$ be the subfamily of tagged intervals from $\cP$ defined by the following relation:
+	\begin{align*}
+	(c_i , [x_{i- 1} , x_i]) \in \cP_1 \iff c_i = 1/k \text{ for some } k \in \bN.
+	\end{align*}
+From the definition of the integer $N$, the number of elements in $\cP_1$ is at most $N$ (for any given $\cP$). This comes from the fact that the only number of the form $1/k$ greater than $c$ are $1, 1/2 , 1/3 , \ldots , 1/(N-1)$. Then this implies that
+	\begin{align*}
+	|S(f, \cP )| = |S (f , \cP_1 ) |= \sum_{i = 1}^{k_1} 1 (x_{j_i} - x_{j_i - 1}) \leq \sum_{i = 1}^N (x_{j_i} - x_{j_i - 1}) < N (\varepsilon /N) = \varepsilon .
+	\end{align*}
+Thus, if $\Vert \cP \Vert < \delta$ with $\delta := \varepsilon /N$, then $|S (f, \cP )| < \varepsilon$. This means that $f$ is Riemann integrable on $[c, 1]$ and $\int_c^1 f = 0$.
+
+Finally from exerise 5 we conclude that $f$ is Riemann integrable on $[0, 1]$.
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Show that the function $f : [0, 1] \ra \bR$ defined by $f(x) = 0$ if $x \neq 0$ and $f(x) = 4$ if $x = 0$ is Riemann integrable on $[0, 1]$.
+\end{exer}
+\begin{sol}
+We will show that $\int_0^1 f = 0$.
+
+Let $\varepsilon > 0$ and let $\cP = \{ (c_i , [x_{i - 1} , x_i ]) \, : \, i = 1 , 2, \ldots , N \}$ be a tagged partition of $[0, 1]$ such that $\Vert \cP \Vert < \varepsilon/4$. 
+
+The only tagged interval in $\cP$ that is important is $(c_1, [0, x_1])$ because the number $0$ belongs to $[0, x_1]$. So we have
+	\begin{align*}
+	S (f, \cP ) = \sum_{i = 1}^N f(c_i) (x_i - x_{i-1}) = f(c_0) (x_1 - x_0) .
+	\end{align*}
+	The value of $f(c_0)$ is less that $4$ for any choice of $c_0 \in [0, x_1]$. So
+	\begin{align*}
+	|S (f, \cP)| = |f(c_0)| (x_1 - x_0) \leq 4 \Vert \cP \Vert < \varepsilon .
+	\end{align*}
+Thus $f$ is Riemann integrable on $[0, 1]$ and $\int_0^1 f = 0$.
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Let $\cP$ be the following tagged partition of $[-1, 2]$:
+	\begin{align*}
+	\cP &:= \{ (-9, [-1, -.8]) , (-.7, [-.8, -.3]), (-.1, [-.3, 0]), (.2, [0,0.2]), (.2, [.2, .4]), (.8, [.4, 1]), \\
+	& \phantom{:= \{} (1.42, [1, 1.5]), (1.9, [1.5, 2]) \} .
+	\end{align*}
+Find another partition $\cP_0$ such that $\Vert \cP_0 \Vert \leq \Vert \cP \Vert/3$.
+\end{exer}
+\begin{sol}
+The norm of $\cP$ is $0.6$. Let $\delta = 0.1 < 0.6/3$. Define $\cP_0 := \{ (c_i , [x_{i - 1} , x_i]) \, : \, i = 1, 2, 3, \ldots , 30 \}$ where
+	\begin{align*}
+	x_i = -1 + i 0.1 \quad (i = 0, 1, 2, \ldots , 30)
+	\end{align*}
+and
+	\begin{align*}
+	c_i = x_i \quad (i = 1, 2, \ldots , 30 ) .
+	\end{align*}
+Then we have $\Vert \cP_1 \Vert = 0.1 \leq \Vert \cP \Vert/3$.
+\end{sol}
+
+
+\end{document}

@@ -1,0 +1,269 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+
+\usepackage{comment}
+\usepackage{url}
+
+\usepackage{titlesec}
+\titleformat{\section}[frame]
+{\normalfont\scshape}
+{\thesection}{8pt}{\centering}
+
+\usepackage{array}
+
+\pgfplotsset{compat=1.16}
+
+%\usepackage[margin=1cm]{cloze}
+
+\usepackage[thmmarks]{ntheorem}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bQ}{\mathbb{Q}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+    
+\newcommand{\MyC}[1]{\begin{tikzpicture}
+\node (boxIntro) at (0,0) {};
+\node [myboxT](Intro) at (boxIntro){%
+	\begin{minipage}{0.9\textwidth}
+	#1
+	\end{minipage}};
+\end{tikzpicture}}
+
+%%%%  Environnement exer et solutionnaire
+{\theorembodyfont{}
+\theoremstyle{plain}
+\theoremseparator{\textbf{.}}
+\theoremsymbol{}
+\newtheorem{exer}{\textbf{Exercise}}}
+
+{\theorembodyfont{\color{black}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\square$}
+\newtheorem*{sol}{\textbf{Solution}}}
+
+
+\renewcommand*{\theexer}{\arabic{exer}}
+\renewcommand*{\thesol}{\arabic{sol}}
+
+
+\newcommand{\headHW}[4]{%
+	\noindent \hrulefill \\
+	MATH-#1 #2 \\
+	#3 #4
+	
+}
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Introduction to Real Analysis \hfill YOUR FULL NAME\\
+	Homework 05 \hfill Fall 2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+	\noindent Due date: November 8${}^{\text{th}}$ 1:20pm \hfill Total: \hspace{0.3cm}/70.
+	
+\vspace*{0.5cm}
+
+	\bgroup \renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+\centering
+\begin{tabular}{|m{1.5cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|}
+\hline
+Exercise & 1 (5) & 2 (5) & 3 (5) & 4 (5) & 5 (10) & 6 (10) & 7 (5) & 8 (5) & 9 (5) & 10 (10) \\
+\hline
+Score & & & & & & & & & &  \\\hline
+\end{tabular}
+\caption{Scores for each exercises}
+\end{table}
+\egroup
+	
+\vspace*{0.5cm}
+
+{\bf Instructions:} You must answer all the questions below and send your solution by email (to \url{parisepo@hawaii.edu}). If you decide to not use {\LaTeX} to hand out your solutions, please be sure that after you scan your copy, it is clear and readable. Make sure that you attached a copy of the homework assignment to your homework. 
+
+\noindent If you choose to use {\LaTeX}, you can use the template available on the course website.
+
+\noindent No late homework will be accepted. No format other than PDF will be accepted. Name your file as indicated in the syllabus.
+
+\section{Writing problems}
+For each of the following problems, you will be asked to write a clear and detailed proof. You will have the chance to rewrite your solution in your semester project after receiving feedback from me.
+
+%% ---------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f : \bR \ra \bR$ and suppose that there exists a positive constant $M$ such that $|f(y) - f(x)| \leq M |y - x|$ for all $x, y \in \bR$. Prove that $f$ is uniformly continuous on $\bR$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f : [0, \infty ) \ra \bR$ be nonnegative and continuous such that $\lim_{x \ra \infty} f(x) = 0$. Prove that $f$ attains its maximum at some point in $[0, \infty )$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+Suppose that $f: [a, b] \ra \bR$ is a continuous function such that $f([a, b]) \subseteq [a, b]$. Prove that there is a $c \in [a, b]$ such that $f(c) = c$. [This one of the many fixed point Theorem.]
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Suppose that $f: (a, b) \ra \bR$ is twice differentiable on $(a,b)$ and there are two points $c  < d$ in $(a ,b)$ such that $f'(c) = f'(d)$. Show that there is a point $x \in (c, d)$ such that $f''(x) = 0$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(10 pts)
+Suppose that $f : (a, b) \ra \bR$ is differentiable at $x_0 \in (a, b)$. 
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item Prove that
+	\begin{align}
+	\lim_{h \ra 0} \frac{f (x_0 + h) - f(x_0 - h)}{2h} \label{eq:SymmetricDerivative}\tag{$\star$}
+	\end{align}
+exists and equals $f'(x_0)$.
+	\item Find a continuous function $f : \bR \ra \bR$ and a point $x_0 \in \bR$ such that $f$ is not differentiable at $x_0$, but the limit \eqref{eq:SymmetricDerivative} exists.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+
+
+\section{Homework problems}
+Answer all the questions below. Make sure to show your work.
+
+\begin{exer}
+(10pts)
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Suppose $r > 0$. Prove that $f : (0, \infty ) \ra \bR$ defined by $f(x) = x^r$ is differentiable on $(0, \infty )$ and compute its derivative. [Hint: take for granted that $e^x$ and $\ln x$ are differentiable with $(e^x)' = e^x$ and $(\ln x)' = 1/x$. Rewrite then $x^r$ in terms of a composition of these two differentiable functions.]
+\item Define $f(x) = \sqrt{x^2 + \sin x + \cos x}$ where $x \in [0, \pi/2 ]$. Show that $f$ is a differentiable function.
+\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Show that $S \subseteq \bR$ is closed if and only if $\bR \backslash S$ is open.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-------------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f : \bR \ra \bR$ be a differentiable function and define $g(x) = x^2 f(x^3)$. Show that $g$ is differentiable and compute its derivative.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Prove that $f(x) = \arcsin x$ is differentiable on its domain and find a formula for the derivative of $f$ (justify all your steps!).
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(10 pts)
+Use the Mean-Value Theorem to show the following inequalities.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item $n y^{n-1} (x - y) \leq x^n - y^n \leq n x^{n-1} (x - y)$ if $n \in \bN$ and $0 \leq y \leq x$.
+	\item $\sqrt{1 + x} < 1 + \frac{1}{2} x$ for $x > 0$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+
+\end{document}

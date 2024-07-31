@@ -1,0 +1,182 @@
+\documentclass[addpoints, 12pt]{exam}%, answers]
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{arydshln}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{enumitem}
+
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,patterns}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{thmtools}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{pifont}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\DeclareMathOperator{\dom}{dom}
+
+%%%%%% Définitions Theorems and al.
+%\declaretheoremstyle[preheadhook = {\vskip0.2cm}, mdframed = {linewidth = 2pt, backgroundcolor = yellow}]{myThmstyle}
+%\declaretheoremstyle[preheadhook = {\vskip0.2cm}, postfoothook = {\vskip0.2cm}, mdframed = {linewidth = 1.5pt, backgroundcolor=green}]{myDefstyle}
+%\declaretheoremstyle[bodyfont = \normalfont , spaceabove = 0.1cm , spacebelow = 0.25cm, qed = $\blacktriangle$]{myRemstyle}
+
+%\declaretheorem[ style = myThmstyle, name=Th\'eor\`eme]{theorem}
+%\declaretheorem[style =myThmstyle, name=Proposition]{proposition}
+%\declaretheorem[style = myThmstyle, name = Corollaire]{corollary}
+%\declaretheorem[style = myThmstyle, name = Lemme]{lemma}
+%\declaretheorem[style = myThmstyle, name = Conjecture]{conjecture}
+
+%\declaretheorem[style = myDefstyle, name = D\'efinition]{definition}
+
+%\declaretheorem[style = myRemstyle, name = Remarque]{remark}
+%\declaretheorem[style = myRemstyle, name = Remarques]{remarks}
+
+\newtheorem{theorem}{Théorème}
+\newtheorem{corollary}{Corollaire}
+\newtheorem{lemma}{Lemme}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+
+\theoremstyle{definition}
+
+\newtheorem{definition}{Définition}[section]
+\newtheorem{example}{Exemple}[section]
+\newtheorem{remark}{\textcolor{red}{Remarque}}[section]
+\newtheorem{exer}{\textbf{Exercice}}[section]
+
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Intro. to Real Analysis \hfill Pierre-Olivier Paris{\'e}\\
+	Team test 02 \hfill Fall 2021, 20/10/2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+\vspace*{1cm}
+
+\noindent\makebox[\textwidth]{\textbf{Name of the members of the team:}\enspace \hrulefill}
+\noindent\makebox[\textwidth]{\hrulefill}
+\makebox[\textwidth]{\textbf{Team name (if any):}\enspace\hrulefill}
+
+\vspace*{1cm}
+\begin{center}
+\gradetable[h][questions]
+\end{center}
+\vspace*{1cm}
+
+{\bf Instructions:} You must answer all the questions in teams of $3$ and hand out one copy per team. You are allowed to use the lecture notes only. No other tools such as a cell-phone, a calculator, or a laptop. Only your pen and eraser. The space between the questions are there to write the final versions of your answers.
+
+\qformat{\rule{0.3\textwidth}{.4pt} \begin{large}{\textsc{Question}} \thequestion \end{large} \hrulefill \hspace*{0.1cm} \textbf{(\totalpoints\hspace*{0.1cm} pts)}}
+
+\newpage
+
+\begin{questions}
+
+\question[10]
+Let $f: [0, 2] \ra \bR$ be the function defined by $f(x) = x^3 + 2x - 1$ and let $L = 0$. Find the interval $[a_3, b_3]$ constructed in the proof of the Intermediate Value Theorem. (Exceptionnally, you can use the calculator to do some of the calculations.)
+	
+	\begin{solution}
+	Let $a = 0$ and $b= 1$. Put $d = (0 + 1)/2$. Then $f (1/2) = 1/8 + 1 - 1 = 1/8$ and so $1/8 > 0$. We put $a_1 = 0$ and $b_1 = 1/8$.
+	
+	Let $d = (a_1 + b_1)/2 = 1/16$. Then $f(1/16) = -0.874755859375
+$. Since $f(1/16) < 0$, we put $a_2 = 1/16$ and $b_2 = b_1 = 1/8$.
+
+	Let $d = (a_2 + b_2)/2 = 3/32$. Then $f(3/32) = -0.618408203125
+$. Since $f(3/32) < 0$, then $a_3 = 3/32$ and $b_3 = b_2 = 1/8$.
+
+	So, the interval is $[3/32 , 1/8]$.
+	\end{solution}
+\newpage
+
+\question[10]
+Let $S , T \subseteq \bR$ be two open sets. Show that $S \cap T$ is an open set. [Hint to start: Try to illustrate the situation and what you want to prove with a picture.]
+
+	\begin{solution}
+	Let $x \in S \cap T$. Then $x \in S$ and $x \in T$. Since $S$ is open, there is a $\delta_1 > 0$ such that $(x - \delta_1 , x + \delta_1 ) \subset S$. Similarly, there is a $\delta_2 > 0$ such that $(x - \delta_2 , x + \delta_2) \subseteq T$. Let $\delta := \min \{ \delta_1 , \delta_2 \}$. We will now prove that $(x - \delta , x + \delta ) \subset S \cap T$. Let $y \in (x - \delta , x + \delta )$. This means that $x - \delta < y < x + \delta$. By the definition of $\delta$, we have $\delta \leq \delta_1 , \delta_2$. So, firstly, we get 
+		\begin{align*}
+		x - \delta_1 \leq x - \delta < y < x + \delta \leq x + \delta_1
+		\end{align*}
+	and since $(x - \delta_1 , x + \delta_1 ) \subseteq S$, then $y \in S$. Secondly, we get
+		\begin{align*}
+		x - \delta_2 \leq x - \delta < y < x + \delta \leq x + \delta_2
+		\end{align*}
+	and since $(x - \delta_2 , x + \delta_2 ) \subseteq T$, then $y \in T$. Thus, we conclude that $y \in S$ and $y \in T$, and so $y \in S \cap T$. Since $y$ was arbitrary, we have $(x - \delta , x + \delta ) \subseteq S \cap T$.
+	\end{solution}
+	
+	
+\end{questions}
+
+\end{document}

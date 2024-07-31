@@ -1,0 +1,307 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+
+\usepackage{comment}
+\usepackage{url}
+
+\usepackage{titlesec}
+\titleformat{\section}[frame]
+{\normalfont\scshape}
+{\thesection}{8pt}{\centering}
+
+\usepackage{array}
+
+\pgfplotsset{compat=1.16}
+
+%\usepackage[margin=1cm]{cloze}
+
+\usepackage[thmmarks]{ntheorem}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bQ}{\mathbb{Q}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+    
+\newcommand{\MyC}[1]{\begin{tikzpicture}
+\node (boxIntro) at (0,0) {};
+\node [myboxT](Intro) at (boxIntro){%
+	\begin{minipage}{0.9\textwidth}
+	#1
+	\end{minipage}};
+\end{tikzpicture}}
+
+%%%%  Environnement exer et solutionnaire
+{\theorembodyfont{}
+\theoremstyle{plain}
+\theoremseparator{\textbf{.}}
+\theoremsymbol{}
+\newtheorem{exer}{\textbf{Exercise}}}
+
+{\theorembodyfont{\color{black}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\square$}
+\newtheorem*{sol}{\textbf{Solution}}}
+
+
+\renewcommand*{\theexer}{\arabic{exer}}
+\renewcommand*{\thesol}{\arabic{sol}}
+
+
+\newcommand{\headHW}[4]{%
+	\noindent \hrulefill \\
+	MATH-#1 #2 \\
+	#3 #4
+	
+}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%%%%%%%%%% HEADING HERE %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\noindent \hrulefill \\
+	MATH-331 Introduction to Real Analysis \hfill YOUR FULL NAME\\
+	Homework 07 \hfill Fall 2021\\\vspace*{-0.7cm}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\noindent\hrulefill
+	
+	\noindent Due date: December, 6${}^{\text{th}}$ 1:20pm \hfill Total: \hspace{0.3cm}/65.
+	
+\vspace*{0.5cm}
+
+	\bgroup \renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+\centering
+\begin{tabular}{|m{1.5cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|}
+\hline
+Exercise & 1 (10) & 2 (5) & 3 (10) & 4 (5) & 5 (5) & 6 (10) & 7 (5) & 8 (5) & 9 (5) & 10 (5) \\
+\hline
+Score & & & & & & & & & &  \\\hline
+\end{tabular}
+\caption{Scores for each exercises}
+\end{table}
+\egroup
+	
+\vspace*{0.5cm}
+
+{\bf Instructions:} You must answer all the questions below and send your solution by email (to \url{parisepo@hawaii.edu}). If you decide to not use {\LaTeX} to hand out your solutions, please be sure that after you scan your copy, it is clear and readable. Make sure that you attached a copy of the homework assignment to your homework. 
+
+\noindent If you choose to use {\LaTeX}, you can use the template available on the course website.
+
+\noindent No late homework will be accepted. No format other than PDF will be accepted. Name your file as indicated in the syllabus.
+
+
+\section{Writing problems}
+For each of the following problems, you will be asked to write a clear and detailed proof. All the exercises below can be solve without using the definition with partitions. Try to go back to homework 6 and use some of the exercises there to solve the following problems. 
+
+You will have the chance to rewrite your solution in your semester project after receiving feedback from me.
+
+%% ---------------------------------------------
+\begin{exer}
+(10 pts)
+Prove that a step function is Riemann integrable on $[a, b]$. Follow the steps below.
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Let $I$ be a subinterval of $[a, b]$ and put $\phi = c \chi_I$. Prove that $\phi$ is Riemann integrable and that $\int_a^b \phi = c \ell (I)$. [There are three cases to consider: $I = [u, v]$, $I = (u, v]$, and $I = \{ u \} = [u, u]$.]
+\item Prove by induction that if $f_1$, $f_2$, $\ldots$, $f_n$ are Riemann integrable functions on $[a, b]$, then $f_1 + f_2 + \cdots + f_n$ is Riemann integrable and
+	\begin{align*}
+	\int_a^b (f_1 + f_2 + \cdots + f_n) = \int_a^b f_1 + \int_a^b f_2 + \cdots + \int_a^b f_n .
+	\end{align*}
+\item Write $\phi = \sum_{k = 1}^n c_k \chi_{I_k}$. Use the second part of this exercise to show that $\phi$ is Riemann integrable.
+\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Suppose that $f$ is Riemann integrable on $[a, b]$ and that $f$ is nonnegative (means that $f(x) \geq 0$ for $x \in [a, b]$). Let $u, v \in \bR$. Show that if $a \leq u < v \leq b$, then
+	\begin{align*}
+	\int_u^v f \leq \int_a^b f .
+	\end{align*}
+[Hint: Use the following property of the Riemann Integral multiple times: $\int_a^b f = \int_a^c f + \int_c^b f$.]
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(10 pts)
+Use the Fundamental Theorem of Calculus to solve the following problems:
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item Suppose that $f$ is continuous on $[a, b]$ and that $f$ is nonnegative on $[a, b]$. Show that if $\int_a^b f = 0$, then $f(x) = 0$ for any $x \in [a, b]$.
+	\item Suppose that $f$ and $g$ are continuous on $[a, b]$ such that $\int_a^b f = \int_a^b g$. Show that there exists a point $c \in (a, b)$ such that $f(c) = g(c)$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f$ be a continuous function on $[a, b]$. Prove that there exists a number $c \in [a, b]$ such that $f(c) (b - a) = \int_a^b f$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Suppose that $f$ is Riemann integrable on $[a, b]$ and is strictly increasing there. Prove that there exists a point $c \in (a, b)$ such that 
+	\begin{align*}
+	\int_a^b f = f(a) (c - a) + f(b) (b - c).
+	\end{align*}
+[Hint: Define the function $g(x) = f(a) (x - a) + f(b) (b - x)$. Show that $\int_a^b f$ is between the numbers $f(a) (b - a)$ and $f(b) (b - a)$ and use the Intermediate Value Theorem.]
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+\section{Homework problems}
+Answer all the questions below. Make sure to show your work.
+
+\begin{exer}
+(10pts)
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Show that the function $f : [0, 1] \ra \bR$ defined by	
+	\begin{align*}
+	f(x) = \begin{cases}
+	1 &\text{, } x \in \bQ \\
+	0 &\text{, } x \not\in \bQ
+	\end{cases}
+	\end{align*}
+is not Riemann integrable on $[0, 1]$. [Hint: Use exercise 4 from Homework 6.]
+\item Define the two functions $g : [0, 1] \ra \bR$ and $h : [0, 1] \ra \bR$ by $g = \chi_{(0, 1]}$ and
+	\begin{align*}
+	h (x) = \begin{cases}
+	0 & \text{, } x \not\in \bQ \\
+	\frac{1}{q} & \text{, } x = p/q \in \bQ .
+	\end{cases}
+	\end{align*}
+Use the first part to show that $g \circ h$ is not Riemann integrable on $[0, 1]$. What can you say about the composition of two Riemann integrable functions in light of this last examples?
+\end{enumerate}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Show that if $f$ is continuous on $[a, b]$, then $|f|$ is Riemann integrable on $[a, b]$ and
+	\begin{align*}
+	\Big| \int_a^b f \Big| \leq \int_a^b |f| .
+	\end{align*}
+[Hint: There is a clever way to show that $|f|$ is Riemann integrable without using the definition with the partitions.]
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Find $f'(x)$ if $f (x) = \displaystyle\int_{\sqrt{x}}^{\sqrt[3]{x}} \frac{1}{1 + t^3} \, dt$ where $x \in [0, 1]$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-------------------------------------------------
+\begin{exer}
+(5 pts)
+Find a function $f : [1, \infty ) \ra \bR$ such that $f(1) = 0$ and $f'(x) = 1 + \sin (x^2 )$ for all $x > 1$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+By thinking the following sum as a Riemann sum, evaluate
+	\begin{align*}
+	\lim_{n \ra \infty} \sum_{k = 1}^n \frac{n}{k^2 + n^2} .
+	\end{align*}
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+
+\end{document}

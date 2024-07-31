@@ -1,0 +1,429 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+
+\usepackage{comment}
+\usepackage{url}
+\usepackage{calc}
+
+\usepackage{titlesec}
+\titleformat{\section}[frame]
+{\normalfont\scshape}
+{\thesection}{8pt}{\centering}
+
+\usepackage{array}
+
+\pgfplotsset{compat=1.16}
+
+%\usepackage[margin=1cm]{cloze}
+
+\usepackage[thmmarks]{ntheorem}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cT}{\mathcal{T}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+    
+\newcommand{\MyC}[1]{\begin{tikzpicture}
+\node (boxIntro) at (0,0) {};
+\node [myboxT](Intro) at (boxIntro){%
+	\begin{minipage}{0.9\textwidth}
+	#1
+	\end{minipage}};
+\end{tikzpicture}}
+
+%%%%  Environnement exer et solutionnaire
+{\theorembodyfont{}
+\theoremstyle{plain}
+\theoremseparator{\textbf{.}}
+\theoremsymbol{}
+\newtheorem{exer}{\textbf{Exercise}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\square$}
+\newtheorem*{sol}{\textbf{Solution}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\qed$}
+\newtheorem*{solWP}{\textbf{Solution}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\qed$}
+\newtheorem*{hint}{\textbf{Hints}}}
+
+\renewcommand*{\theexer}{\arabic{exer}}
+\renewcommand*{\thesol}{\arabic{sol}}
+\renewcommand*{\thesolWP}{\arabic{solWP}}
+\renewcommand*{\thehint}{\arabic{hint}}
+
+%%% Ignorer les solutions
+\excludecomment{sol}
+\excludecomment{solWP}
+\excludecomment{hint}
+
+\newcommand{\headHW}[4]{%
+	\noindent \hrulefill \\
+	MATH-#1 #2 \\
+	#3 #4
+	
+}
+
+\makeatletter
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\newcommand{\arc@char}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}%
+
+\newcommand{\arc}[1]{\mathpalette\arc@arc{#1}}
+
+\newcommand{\arc@arc}[2]{%
+  \sbox0{$\m@th#1#2$}%
+  \vbox{
+    \hbox{\resizebox{\wd0}{\height}{\arc@char}}
+    \nointerlineskip
+    \box0
+  }%
+}
+\makeatother
+
+\newcount\QO
+\newcounter{QT}
+\newcounter{QTh}
+\newcounter{QF}
+\newcounter{QFi}
+\newcounter{QS}
+\newcounter{QSe}
+\newcounter{QE}
+\newcounter{QN}
+\newcounter{QTe}
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Introduction to Real Analysis \hfill Created by P.-O. Paris{\'e}\\
+	Homework 07 \hfill Fall 2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+	\noindent Due date: December, 6${}^{\text{th}}$ 1:20pm \hfill Total: \hspace{0.3cm}/65.
+	
+\vspace*{0.5cm}
+
+	\bgroup \renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+\centering
+\begin{tabular}{|m{1.5cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|}
+\hline
+Exercise & 1 (10) & 2 (5) & 3 (10) & 4 (5) & 5 (5) & 6 (10) & 7 (5) & 8 (5) & 9 (5) & 10 (5) \\
+\hline
+Score & & & & & & & & & &  \\\hline
+\end{tabular}
+\caption{Scores for each exercises}
+\end{table}
+\egroup
+	
+\vspace*{0.5cm}
+
+{\bf Instructions:} You must answer all the questions below and send your solution by email (to \url{parisepo@hawaii.edu}). If you decide to not use {\LaTeX} to hand out your solutions, please be sure that after you scan your copy, it is clear and readable. Make sure that you attached a copy of the homework assignment to your homework. 
+
+\noindent If you choose to use {\LaTeX}, you can use the template available on the course website.
+
+\noindent No late homework will be accepted. No format other than PDF will be accepted. Name your file as indicated in the syllabus.
+
+\section{Writing problems}
+For each of the following problems, you will be asked to write a clear and detailed proof. All the exercises below can be solve without using the definition with partitions. Try to go back to homework 6 and use some of the exercises there to solve the following problems. 
+
+You will have the chance to rewrite your solution in your semester project after receiving feedback from me.
+
+%% ---------------------------------------------
+\begin{exer}
+(10 pts)
+Prove that a step function is Riemann integrable on $[a, b]$. Follow the steps below.
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Let $I$ be a subinterval of $[a, b]$ and put $\phi = c \chi_I$. Prove that $\phi$ is Riemann integrable and that $\int_a^b \phi = c \ell (I)$. [There are three cases to consider: $I = [u, v]$, $I = (u, v]$, and $I = \{ u \} = [u, u]$.]
+\item Prove by induction that if $f_1$, $f_2$, $\ldots$, $f_n$ are Riemann integrable functions on $[a, b]$, then $f_1 + f_2 + \cdots + f_n$ is Riemann integrable and
+	\begin{align*}
+	\int_a^b (f_1 + f_2 + \cdots + f_n) = \int_a^b f_1 + \int_a^b f_2 + \cdots + \int_a^b f_n .
+	\end{align*}
+\item Write $\phi = \sum_{k = 1}^n c_k \chi_{I_k}$. Use the second part of this exercise to show that $\phi$ is Riemann integrable.
+\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}
+\item Suppose that $I = [u, v]$. Since $\phi$ is zero on $[a, u)$, then it is integrable on $[a, c)$ for each $c \in (a, u)$. Also since $\phi$ is bounded, from exercise 5 in homework 5, $\phi$ is integrable on $[a, u]$. Similarly, $\phi$ is integrable on $[v, b]$. Now $\phi$ is just the constant function $c$ on $[u, v]$ which is integrable. Thus from the properties of the Riemann integral, $\phi$ is integrable on $[a, b]$.
+\item From the properties of the Riemann integral, we know that $\int_a^b (f_1 + f_2) = \int_a^b f_1 + \int_a^b f_2$ for two Riemann integrable functions $f_1$ and $f_2$. Suppose that the property is true for $n$ Riemann integrable functions $f_1$, $f_2$, $\ldots$, $f_n$. Then $f_1 + f_2 + f_3 + \ldots + f_n$ and $f_n$ are Riemann integrable, so $f_1 + f_2 + \ldots + f_n + f_{n+1}$ is Riemann integrable and
+	\begin{align*}
+	\int_a^b (f_1 + f_2 + \cdots + f_n + f_{n+1}) &= \int_a^b (f_1 + f_2 + \cdots + f_n) + \int f_{n+1} \\
+	&= \int_a^b f_1 + \int_a^b f_2 + \cdots + \int f_{n + 1}
+	\end{align*}
+where in the last equality, we used the induction hypothesis.
+\item Let $f_k := c_k \chi_{I_k}$. From a), each $f_k$ are Riemann integrable on $[a, b]$. From b), their sum is also integrable on $[a, b]$. But their sum is simply $\phi$. Thus $\phi$ is Riemann integrable on $[a, b]$.
+\end{enumerate}
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Suppose that $f$ is Riemann integrable on $[a, b]$ and that $f$ is nonnegative (means that $f(x) \geq 0$ for $x \in [a, b]$). Let $u, v \in \bR$. Show that if $a \leq u < v \leq b$, then
+	\begin{align*}
+	\int_u^v f \leq \int_a^b f .
+	\end{align*}
+[Hint: Use the following property of the Riemann Integral multiple times: $\int_a^b f = \int_a^c f + \int_c^b f$.]
+\end{exer}
+\begin{sol}
+Let $a \leq u \leq v \leq b$. Since $f$ is Riemann integrable on $[a, b]$, it is Riemann integrable on each subinterval of $[a, b]$. In particular, $f$ is Riemann integrable on $[a, u]$, $[u, v]$, and $[v, b]$. This implies that
+	\begin{align*}
+	\int_a^b f = \int_a^u f + \int_u^v f + \int_v^b f .
+	\end{align*}
+Since $f(x) \geq 0$, then $\int_a^u f \geq 0$ and $\int_v^b f \geq 0$. Thus, 
+	\begin{align*}
+	\int_a^b f \geq \int_u^v f 
+	\end{align*}
+which is exactly what we wanted!
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(10 pts)
+Use the Fundamental Theorem of Calculus to solve the following problems:
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item Suppose that $f$ is continuous on $[a, b]$ and that $f$ is nonnegative on $[a, b]$. Show that if $\int_a^b f = 0$, then $f(x) = 0$ for any $x \in [a, b]$.
+	\item Suppose that $f$ and $g$ are continuous on $[a, b]$ such that $\int_a^b f = \int_a^b g$. Show that there exists a point $c \in (a, b)$ such that $f(c) = g(c)$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}
+\item Let $F(x) = \int_a^x f$. Since $f$ is nonnegative on $[a, b]$, this means that for any $x \in [a, b]$, we have
+	\begin{align*}
+	F(x) = \int_a^x f \geq 0 .
+	\end{align*}
+This also means that if $x \leq y$, from the previous exercise, we have $F(x) \leq F(y)$. So $F$ is increasing. However, $F(b) = 0$. Thus, we must have that $F(x) = 0$ for any $x \in [a, b]$. From the Fundamental Theorem of Calculus, we know that $F'(x) = f(x)$ for any $x \in (a, b)$ which means that $f(x) = 0$ for any $x \in (a, b)$. By continuity, $f(x) = 0$ for any $x \in [a, b]$.
+\item Let $F := \int_a^x (f - g)$. Since $f$ and $g$ are Riemann integrable on $[a, b]$, $F$ is well-defined. By the Fundamental Theorem of Calculus, since $f - g$ is continuous, this implies that $F$ is differentiable and continuous on $(a, b)$ and $[a, b]$ respectively. We see that $F(a) = 0$ and $F(b) = 0$. By Rolle's Theorem, this implies that there exists a $c \in (a, b)$ such that $F'(c) = 0$. But $F'(x) = f(x) - g(x)$ for any $x \in (a, b)$, so $f(c) = g(c)$.
+\end{enumerate}
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f$ be a continuous function on $[a, b]$. Prove that there exists a number $c \in [a, b]$ such that $f(c) (b - a) = \int_a^b f$.
+\end{exer}
+\begin{sol}
+If $f$ is constant on $[a, b]$, just take any $c \in [a, b]$.
+
+Suppose that $f$ is nonconstant. Then $f([a, b])$ is an interval. We will show that $\frac{1}{b - a} \int_a^b f \in f ([a, b])$. Let $m$ and $M$ be the minimum and maximum of $f$ on $[a, b]$. By the Extreme Value Theorem, we know that these exists and are attained by some points in $[a, b]$, say by $x_m, x_M$. Thus $m, M \in f ([a, b])$. We have
+	\begin{align*}
+	\int_a^b f \leq (b - a) M 
+	\end{align*}
+and so $\int_a^b f / (b - a) \leq M$. Also
+	\begin{align*}
+	\int_a^b f \geq (b - a) m
+	\end{align*}
+and so $\int_a^b f/ (b -a) \geq m$. Thus 
+	\begin{align*}
+	m \leq \frac{1}{b-a} \int_a^b f \leq M
+	\end{align*}
+and so by the Intermediate Value Theorem, there exists a $c \in [x_m, x_M] \subseteq [a, b]$ such that $f (c) = \frac{1}{b-a} \int_a^b f$. 
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Suppose that $f$ is Riemann integrable on $[a, b]$ and is strictly increasing there. Prove that there exists a point $c \in (a, b)$ such that 
+	\begin{align*}
+	\int_a^b f = f(a) (c - a) + f(b) (b - c).
+	\end{align*}
+[Hint: Define the function $g(x) = f(a) (x - a) + f(b) (b - x)$. Show that $\int_a^b f$ is between the numbers $f(a) (b - a)$ and $f(b) (b - a)$ and use the Intermediate Value Theorem.]
+\end{exer}
+\begin{sol}
+Define $g(x) = f(a) (x - a) + f(b) (b - x)$. We see that $g(a) = f(b) (b -a)$ and $g(b) = f(a) (b - a)$. We will show that $\int_a^b f$ is between these two numbers.
+
+Since $f$ is increasing, $f(x) \leq f(b)$ for any $x \in [a, b]$. So
+	\begin{align*}
+	\int_a^b f \leq f(b) (b - a) .
+	\end{align*}
+For the same reason, we have
+	\begin{align*}
+	\int_a^b f \geq f(a) (b - a) .
+	\end{align*}
+Thus $\int_a^b f$ is between $f(b) (b - a)$ and $f(a) (b - a)$.
+\end{sol}
+
+\section{Homework problems}
+Answer all the questions below. Make sure to show your work.
+
+\begin{exer}
+(10pts)
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item Show that the function $f : [0, 1] \ra \bR$ defined by	
+	\begin{align*}
+	f(x) = \begin{cases}
+	1 &\text{, } x \in \bQ \\
+	0 &\text{, } x \not\in \bQ
+	\end{cases}
+	\end{align*}
+is not Riemann integrable on $[0, 1]$. [Hint: Use exercise 4 from Homework 6.]
+\item Define the two functions $g : [0, 1] \ra \bR$ and $h : [0, 1] \ra \bR$ by $g = \chi_{(0, 1]}$ and
+	\begin{align*}
+	h (x) = \begin{cases}
+	0 & \text{, } x \not\in \bQ \\
+	\frac{1}{q} & \text{, } x = p/q \in \bQ .
+	\end{cases}
+	\end{align*}
+Use the first part to show that $g \circ h$ is not Riemann integrable on $[0, 1]$. What can you say about the composition of two Riemann integrable functions in light of this last examples?
+\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}
+\item We will argue by contradiction. Suppose that $f$ is Riemann integrable. So, from exercise 4 in Homework 6, for any sequence of tagged partitions of $[0, 1]$ $(\cP_n )_{n = 1}^\infty$ with $\lim_{n \ra \infty} \Vert \cP_n \Vert = 0$, we have that $\lim_{n \ra \infty} S (f, \cP_n ) = L$ where $L$ is unique. In other words, the limit $(S (f, \cP_n ))_{n = 1}^\infty$ exists. 
+
+Let $n \geq 1$ be an integer. Define each $\cP_n$ in the following way. Let $x_i := \frac{i}{n}$ where $i = 0, 1, 2, \ldots , 1$. 
+If $n$ is even, then let $c_i \in [x_{i-1}, x_i] \cap \bQ$ for $i = 1, 2, \ldots , n$. If $n$ is odd, then let $c_i \in [x_{i-1}, x_i] \cap \bQ^c$ for $i = 1, 2, \ldots , n$. 
+
+Then, if $n$ is even, we have $S(f, \cP_n) = 1$. But it $n$ is odd, we have $S(f, \cP_n) = 0$. So the sequence $(S(f, \cP_n))_{n = 1}^\infty$ doesn't have a limit. This is a contradiction.
+\item We see by direct verification that $g \circ h = f$ where $f$ is the function in a). Since $f$ is not Riemann integrable, this means that $g \circ h$ is not Riemann integrable. From the lecture notes, we know that $g$ and $h$ are Riemann integrable. This shows that even though two functions are Riemann integrable, this doesn't mean that the composition is Riemann integrable.
+\end{enumerate}
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Show that if $f$ is continuous on $[a, b]$, then $|f|$ is Riemann integrable on $[a, b]$ and
+	\begin{align*}
+	\Big| \int_a^b f \Big| \leq \int_a^b |f| .
+	\end{align*}
+[Hint: There is a clever way to show that $|f|$ is Riemann integrable without using the definition with the partitions.]
+\end{exer}
+\begin{sol}
+We have $-|f| \leq f \leq |f|$. From the properties of the Riemann integral, this means that $-\int_a^b |f| \leq \int_a^b f \leq \int_a^b |f|$. So $|\int_a^b f | \leq \int_a^b |f|$.
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Find $f'(x)$ if $f (x) = \displaystyle\int_{\sqrt{x}}^{\sqrt[3]{x}} \frac{1}{1 + t^3} \, dt$ where $x \in [0, 1]$.
+\end{exer}
+\begin{sol}
+Let $g(t) = \frac{1}{1 + t^3}$ for $t \in [0, 1]$.
+
+From the property of the Riemann integral and since $\sqrt{x} \leq \sqrt[3]{x}$ for $x \in (0, 1)$, we have
+	\begin{align*}
+	\int_0^1 g = \int_0^{\sqrt{x}} g + \int_{\sqrt{x}}^{\sqrt[3]{x}} g + \int_{\sqrt[3]{x}}^{1} g .
+	\end{align*}
+So, by isolating the second term in the right-hand side of the last equality, we get
+	\begin{align*}
+	f(x) = \int_0^1 g- \int_0^{\sqrt{x}} g - \int_{\sqrt[3]{x}}^1 g = \int_0^{\sqrt[3]{x}} g - \int_0^{\sqrt{x}} g .
+	\end{align*}
+Let $\alpha (x) = \sqrt{x}$ and $\beta (x) = \sqrt[3]{x}$. Define the function $G (x) = \int_0^x f$. Then since $t \mapsto 1/(1 + t^3)$ is continuous on $[0, 1]$, the function $G$ is differentiable on $(0, 1)$ with $G' = g$ by the Fundamental Theorem of Calculus. 
+
+We see that $f(x) = G(\beta (x)) - G (\alpha (x))$. Taking the derivative, we get $f'(x) = g (\beta (x)) \beta'(x) - g (\alpha (x)) \alpha'(x)$.
+\end{sol}
+
+%-------------------------------------------------
+\begin{exer}
+(5 pts)
+Find a function $f : [1, \infty ) \ra \bR$ such that $f(1) = 0$ and $f'(x) = 1 + \sin (x^2 )$ for all $x > 1$.
+\end{exer}
+\begin{sol}
+Let $f(x) = \int_1^\infty (1 + \sin (x^2)) \, dx$. From the Fundamental Theorem of Calculus, that should do the job!
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+By thinking the following sum as a Riemann sum, evaluate
+	\begin{align*}
+	\lim_{n \ra \infty} \sum_{k = 1}^n \frac{n}{k^2 + n^2} .
+	\end{align*}
+\end{exer}
+\begin{sol}
+We see that
+	\begin{align*}
+	\sum_{k= 1}^n \frac{n}{k^2 + n^2} = \sum_{k= 1}^n \frac{n^2}{k^2 + n^2} \Big( \frac{1}{n} \Big) = \sum_{k = 1}^n \frac{1/n}{1 + ( \frac{k}{n})^2} .
+	\end{align*}
+Let $f(t) = \frac{1}{1 + t^2}$. Then
+	\begin{align*}
+	\sum_{k = 1}^n \frac{n}{k^2 + n^2} = S (f, \cP_n )
+	\end{align*}
+where $\cP_n := \{ (k/n , [ (k-1)/n , k/n]) \, : \, k = 1, 2, \ldots , n \}$ which is a tagged partition of $[0, 1]$. Since $f$ is Riemann integrable on $[0, 1]$, from exercise 4 in Homework 6, we see that
+	\begin{align*}
+	\lim_{n \ra \infty} S (f, \cP_n ) = \int_0^1 f .
+	\end{align*}
+Now, $\int_0^1 f = \frac{\pi}{4}$. Thus
+	\begin{align*}
+	\lim_{n \ra \infty} \sum_{k = 1}^n \frac{n}{k^2 + n^2} = \lim_{n \ra \infty} S (f , \cP_n ) = \pi/4 .
+	\end{align*}
+\end{sol}
+
+
+\end{document}

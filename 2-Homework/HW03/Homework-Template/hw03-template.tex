@@ -1,0 +1,263 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+
+\usepackage{comment}
+\usepackage{url}
+
+\usepackage{titlesec}
+\titleformat{\section}[frame]
+{\normalfont\scshape}
+{\thesection}{8pt}{\centering}
+
+\usepackage{array}
+
+\pgfplotsset{compat=1.16}
+
+%\usepackage[margin=1cm]{cloze}
+
+\usepackage[thmmarks]{ntheorem}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+    
+\newcommand{\MyC}[1]{\begin{tikzpicture}
+\node (boxIntro) at (0,0) {};
+\node [myboxT](Intro) at (boxIntro){%
+	\begin{minipage}{0.9\textwidth}
+	#1
+	\end{minipage}};
+\end{tikzpicture}}
+
+%%%%  Environnement exer et solutionnaire
+{\theorembodyfont{}
+\theoremstyle{plain}
+\theoremseparator{\textbf{.}}
+\theoremsymbol{}
+\newtheorem{exer}{\textbf{Exercise}}}
+
+{\theorembodyfont{\color{blue}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\square$}
+\newtheorem*{sol}{\textbf{Solution}}}
+
+
+\renewcommand*{\theexer}{\arabic{exer}}
+\renewcommand*{\thesol}{\arabic{sol}}
+
+
+\newcommand{\headHW}[4]{%
+	\noindent \hrulefill \\
+	MATH-#1 #2 \\
+	#3 #4
+	
+}
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Introduction to Real Analysis \hfill YOUR FULL NAME\\
+	Homework 03 \hfill Fall 2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+	\noindent Due date: October 11${}^{\text{th}}$ 1:20pm \hfill Total: \hspace{0.3cm}/70.
+	
+\vspace*{0.5cm}
+
+	\bgroup \renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+\centering
+\begin{tabular}{|m{1.5cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|}
+\hline
+Exercise & 1 (5) & 2 (5) & 3 (5) & 4 (5) & 5 (10) & 6 (10) & 7 (5) & 8 (5) & 9 (5) & 10 (10) \\
+\hline
+Score & & & & & & & & & &  \\\hline
+\end{tabular}
+\caption{Scores for each exercises}
+\end{table}
+\egroup
+	
+\vspace*{0.5cm}
+
+{\bf Instructions:} You must answer all the questions below and send your solution by email (to \url{parisepo@hawaii.edu}). If you decide to not use {\LaTeX} to hand out your solutions, please be sure that after you scan your copy, it is clear and readable. Make sure that you attached a copy of the homework assignment to your homework. 
+
+\noindent If you choose to use {\LaTeX}, you can use the template available on the course website.
+
+\noindent No late homework will be accepted. No format other than PDF will be accepted. Name your file as indicated in the syllabus.
+
+\section{Writing problems}
+For each of the following problems, you will be asked to write a clear and detailed proof. You will have the chance to rewrite your solution in your semester project after receiving feedback from me.
+
+%% ---------------------------------------------
+\begin{exer}
+(5 pts)
+Let $(a_n)_{n = 1}^\infty$ be an increasing sequence and $(b_n)_{n = 1}^\infty$ be a decreasing sequence. Let $(c_n)_{n = 1}^\infty$ be the sequence defined by $c_n = b_n - a_n$. Show that if $\lim_{n \ra \infty} c_n = 0$, then the sequences $(a_n)_{n = 1}^\infty$ and $(b_n)_{n = 1}^\infty$ converges and $\lim_{n \ra \infty} a_n = \lim_{n \ra \infty} b_n$.
+\end{exer}
+\begin{sol}
+Your solution here.
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f: D \subseteq \bR \ra \bR$, and suppose that $x_0$ is an accumulation point of $D$. Suppose that for each sequence $(x_n)_{n = 1}^\infty$ converging to $x_0$ with $x_n \in D\backslash \{ x_0 \}$ for each $n \geq 1$, then the sequence $(f(x_n))_{n = 1}^\infty$ is Cauchy. Show that $f$ has a limit at $x_0$.
+
+[Hint: For two sequences $(x_n)$ and $(y_n)$ that satisfy the assumption, define the sequence $(z_n)$ to be $z_{2n} = x_n$ and $z_{2n - 1} = y_n$. Show that $(f(z_n))$ converges and the sequence $(f(x_n))$ and $(f(y_n))$ converges to the same limit as $(f(z_n))$. Conclude by a theorem in the lecture notes.]
+\end{exer}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Prove that if $f : D \subseteq \bR \ra \bR$ has a limit at $x_0 \in \mathrm{acc}\, D$, then the limit is unique.
+\end{exer}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Suppose $f: D \subseteq \bR \ra \bR$, $g: D \subseteq \bR \ra \bR$ and $h : D \subseteq \bR \ra \bR$ are three functions such that
+	\begin{align*}
+	f(x) \leq h(x) \leq g(x) \quad (\forall x \in D ) .
+	\end{align*}
+Suppose that $f$ and $g$ have limits at $x_0$ with $\lim_{x \ra x_0} f(x) = \lim_{x \ra x_0} g(x)$. Prove that $h$ has a limit at $x_0$ and
+	$$
+	\lim_{x \ra x_0} f(x) = \lim_{x \ra x_0} h(x) = \lim_{x \ra x_0} g(x) .
+	$$
+\end{exer}
+
+%-----------------------------------------------
+\begin{exer}
+(10 pts)
+Let $f : (0, \infty ) \ra \bR$ be a function. We say that $f$ has a limit at $\infty$ if there exists a $L \in \bR$ such that for any $\varepsilon > 0$, there is a real number $M > 0$ such that if $x > M$, then $|f(x) - L| < \varepsilon$. 
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item Show that if $g: (0, \infty ) \ra \bR$ is bounded and $\lim_{x \ra \infty} f(x ) = 0$, then $\lim_{x \ra \infty} f(x) g(x) = 0$.
+	\item Let $a > 0$ and suppose that $f: (a, \infty ) \ra \bR$ and define $g : (0, 1/a ) \ra \bR$ by $g(x) = f(1/x)$. Show that $f$ has a limit at $\infty$ if and only if $g$ has a limit at $0$.
+	\end{enumerate}
+\end{exer}
+
+\section{Homework problems}
+Answer all the questions below. Make sure to show your work.
+
+\begin{exer}
+(10pts)
+For each of the sequences below, determine its nature (converges or diverges)\footnote{You don't need to compute the limit.}:
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item $(a_n)$ where $a_n = \frac{1}{n} + \frac{1}{n + 1} + \cdots + \frac{1}{2n}$.
+	\item $(a_n)$ where $a_n = \frac{1 + 2 + \cdots + n}{n^2}$.
+	\end{enumerate}
+\end{exer}
+
+%------------------------------------------------
+%\begin{exer}
+%Define $f : (-2, 0) \ra \bR$ by $f(x) = \frac{2x^2 + 3x - 2}{x + 2}$. Prove that $f$ has a limit at $x_0 = -2$, and find it.
+%\end{exer}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Define $g: (0, 1) \ra \bR$ by $f(x) = \frac{\sqrt{1 + x} - 1}{x}$. Prove that $g$ has a limit at $0$ and find it.
+\end{exer}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Suppose that $f: (0, 1) \ra \bR$ has a limit at $x_0 = 1$ and $\lim_{x \ra 1} f(x) = 1$. Compute the value of the limit
+	\begin{align*}
+	\lim_{x \ra 1} \frac{f(x) (1 - f(x)^2)}{1 - f(x)} .
+	\end{align*}
+\end{exer}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Prove that if $f: D \ra \bR$ has a limit at $x_0$, then $|f|(x) := |f(x)|$ has a limit at $x_0$.
+\end{exer}
+
+%-------------------------------------------------
+\begin{exer}
+(10 pts)
+Using the link between sequences and limits of functions, show the following.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item If $f(x) = x^n$ ($n \geq 0$), then $\lim_{x \ra x_0} f(x) = x_0^n$ for any $x_0 \in \bR$.
+	\item If $x_0 \in [0, \infty )$, then $\lim_{x \ra x_0} \sqrt{x} = \sqrt{x_0}$.
+\end{enumerate}	 
+\end{exer}
+
+\section{Bonus}
+\begin{exer}
+Assume that $f : \bR \ra \bR$ such that $f(x + y) = f(x) f(y)$ for all $x, y \in \bR$.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item Show that $f$ has a limit at every point of $\bR$.
+	\item Show that either $\lim_{x \ra 0} f(x) = 1$ or $f(x) = 0$ for any $x \in \bR$.
+	\end{enumerate}
+\end{exer}
+
+
+\end{document}

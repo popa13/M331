@@ -1,0 +1,241 @@
+\documentclass[addpoints, 12pt]{exam}%, answers]
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{arydshln}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{enumitem}
+
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,patterns}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{thmtools}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{pifont}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bQ}{\mathbb{Q}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\DeclareMathOperator{\dom}{dom}
+
+%%%%%% Définitions Theorems and al.
+%\declaretheoremstyle[preheadhook = {\vskip0.2cm}, mdframed = {linewidth = 2pt, backgroundcolor = yellow}]{myThmstyle}
+%\declaretheoremstyle[preheadhook = {\vskip0.2cm}, postfoothook = {\vskip0.2cm}, mdframed = {linewidth = 1.5pt, backgroundcolor=green}]{myDefstyle}
+%\declaretheoremstyle[bodyfont = \normalfont , spaceabove = 0.1cm , spacebelow = 0.25cm, qed = $\blacktriangle$]{myRemstyle}
+
+%\declaretheorem[ style = myThmstyle, name=Th\'eor\`eme]{theorem}
+%\declaretheorem[style =myThmstyle, name=Proposition]{proposition}
+%\declaretheorem[style = myThmstyle, name = Corollaire]{corollary}
+%\declaretheorem[style = myThmstyle, name = Lemme]{lemma}
+%\declaretheorem[style = myThmstyle, name = Conjecture]{conjecture}
+
+%\declaretheorem[style = myDefstyle, name = D\'efinition]{definition}
+
+%\declaretheorem[style = myRemstyle, name = Remarque]{remark}
+%\declaretheorem[style = myRemstyle, name = Remarques]{remarks}
+
+\newtheorem{theorem}{Théorème}
+\newtheorem{corollary}{Corollaire}
+\newtheorem{lemma}{Lemme}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+
+\theoremstyle{definition}
+
+\newtheorem{definition}{Définition}[section]
+\newtheorem{example}{Exemple}[section]
+\newtheorem{remark}{\textcolor{red}{Remarque}}[section]
+\newtheorem{exer}{\textbf{Exercice}}[section]
+
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Intro. to Real Analysis \hfill Created by Pierre-O. Paris{\'e}\\
+	Midterm 02 \hfill Fall 2021, 11/12/2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+\vspace*{1cm}
+
+\noindent\makebox[\textwidth]{\textbf{Last name:}\enspace \hrulefill}
+\makebox[\textwidth]{\textbf{First name:}\enspace\hrulefill}
+
+\vspace*{1cm}
+\begin{center}
+\gradetable[h][questions]
+\end{center}
+\vspace*{1cm}
+
+{\bf Instructions:} Make sure to write your complete name on your copy. You must answer all the questions below and write your answers directly on the questionnaire. At the end of the 50 minutes, hand out your copy. 
+
+No devises such as a smart phone, cell phone, laptop, or tablet can be used during the exam. You are not allowed to use the lecture notes and the textbook also.
+
+Make sure to show all your work. State clearly any theorem or definition you are using in your proofs or your calculations.
+
+\vspace*{2cm}
+\noindent Good luck! \hfill Pierre-Olivier Parisé
+
+\qformat{\rule{0.3\textwidth}{.4pt} \begin{large}{\textsc{Question}} \thequestion \end{large} \hspace*{0.2cm} \hrulefill \hspace*{0.1cm} \textbf{(\totalpoints\hspace*{0.1cm} pts)}}
+
+\vspace*{0.5cm}
+
+\newpage
+
+\begin{questions}
+
+\question[10]
+Define the function $f : \bR \ra \bR$ by
+	\begin{align*}
+	f(x) := \begin{cases}
+	x + 1 & \text{ if } x\in \bQ \\
+	-x + 1 & \text{ if } x \in \bR \backslash \bQ .
+	\end{cases}
+	\end{align*}
+	Show that the limit of $f$ at $x = -1$ doesn't exist.
+	\begin{solution}
+	Take $x_n \in \bQ$ such that $x_n \ra -1$. Then, 
+		\begin{align*}
+		f(x_n) = x_n + 1 \ra -1 + 1 = 0 .
+		\end{align*}
+	Take $x_n \not\in \bR \backslash \bQ$ such that $x_n \ra -1$. Then,
+		\begin{align*}
+		f(x_n) = -x_n + 1 \ra 1 + 1 = 2 .
+		\end{align*}
+	Thus we found two sequences converging to two different limits. Then the limit doesn't exist at $x = -1$.
+	\end{solution}
+
+\newpage
+
+\question[15]
+From the Intermediate Value Theorem, we know that there is at least on real number $x$ such that $\cos x = 2x$. Why is there no more than one solution? Justify.\footnote{State the Theorem you use and verify all the hypothesis of the Theorem before using it.}
+\begin{solution}
+Let $f(x) = 2x - \cos x$ where $x \in \bR$. Then, by the sum rule, we know that $f$ is a continuous and differentiable function on $\bR$. 
+
+We have $f(0) = -1$ and $f(\pi/2) = \pi $. So, by the IVT, there must be a point $c \in (0, \pi /2 )$ such that $f (c) = 0$. (This part wasn't necessary in your solution.)
+
+We will now show that $c$ is the only root. Suppose, if possible, that $c_1 , c_2$ are two different real numbers such that $f(c_1) = 0 = f(c_2)$. Then, by Rolle's Theorem, there is a point $t $ between $c_1$ and $c_2$ such that $f'(t) = 0$. But, we have
+	\begin{align*}
+	f'(t) = 2 + \sin (t) \geq 1 > 0 .
+	\end{align*}
+This is a contraction. Thus $f$ has exactly one root in $\bR$. 
+
+From the definition of the function $f$, we see that $f(c) = 0$ implies that $\cos c = c$. So $c$ is the solution to our equation.
+\end{solution}
+	
+\newpage
+
+\question
+Let $f(x) = x^3 + 3x + 1$.
+	
+	\begin{parts}
+	\part[5]
+	Show that $f$ is strictly increasing on $\bR$.
+	\begin{solution}
+	We have $f'(x) = 3x^2 + 3$. So $f'(x) \geq 3 > 0$ for any $x \in \bR$. Thus the function must be strictly increasing.
+	\end{solution}
+	
+	\part[10]
+	Let $g$ be the inverse of $f$. Find $g'(5)$.
+	\begin{solution}
+	We know that $g$ is differentiable and the formula for its derivative is
+		\begin{align*}
+		g'(y) = \frac{1}{f' (x)} = \frac{1}{3x^2 + 3} .
+		\end{align*}
+	where $x$ is the unique real number such that $f(x) = y$. We see that $f(1) = 5$. So,
+		\begin{align*}
+		g'(5) = \frac{1}{f' (1)} = \frac{1}{6} .
+		\end{align*}
+	\end{solution}
+	\end{parts}
+
+\newpage
+	
+\question[10]
+Let $f : \bR \ra \bR$ and $g : \bR \ra \bR$ be two differentiable functions on $\bR$. Suppose that $f'(x)= g(x)$ for any $x \in \bR$ and $g'(x) = -f(x)$ for any $x \in \bR$. Prove that $f^2 + g^2$ is constant on $\bR$.
+
+\begin{solution}
+Since $f$ and $g$ on differentiable on $\bR$, so are $f^2$ and $g^2$ and so is $f^2 + g^2$. Take the derivative. We then get that
+	\begin{align*}
+	( f^2 + g^2)' = 2f f' + 2g g' .
+	\end{align*}
+But, $g' = -f$ and $f' = g$, so 
+	\begin{align*}
+	(f^2 + g^2)' = 2fg - 2gf = 0 .
+	\end{align*}
+Thus, $(f^2 + g^2)' = 0$ on $\bR$. From a result on the derivative, this means that $f^2 + g^2$ is constant.
+\end{solution}
+	
+\end{questions}
+
+\end{document}

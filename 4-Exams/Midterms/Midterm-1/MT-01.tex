@@ -1,0 +1,232 @@
+\documentclass[addpoints, 12pt]{exam}%, answers]
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{arydshln}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{enumitem}
+
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,patterns}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{thmtools}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{pifont}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\DeclareMathOperator{\dom}{dom}
+
+%%%%%% Définitions Theorems and al.
+%\declaretheoremstyle[preheadhook = {\vskip0.2cm}, mdframed = {linewidth = 2pt, backgroundcolor = yellow}]{myThmstyle}
+%\declaretheoremstyle[preheadhook = {\vskip0.2cm}, postfoothook = {\vskip0.2cm}, mdframed = {linewidth = 1.5pt, backgroundcolor=green}]{myDefstyle}
+%\declaretheoremstyle[bodyfont = \normalfont , spaceabove = 0.1cm , spacebelow = 0.25cm, qed = $\blacktriangle$]{myRemstyle}
+
+%\declaretheorem[ style = myThmstyle, name=Th\'eor\`eme]{theorem}
+%\declaretheorem[style =myThmstyle, name=Proposition]{proposition}
+%\declaretheorem[style = myThmstyle, name = Corollaire]{corollary}
+%\declaretheorem[style = myThmstyle, name = Lemme]{lemma}
+%\declaretheorem[style = myThmstyle, name = Conjecture]{conjecture}
+
+%\declaretheorem[style = myDefstyle, name = D\'efinition]{definition}
+
+%\declaretheorem[style = myRemstyle, name = Remarque]{remark}
+%\declaretheorem[style = myRemstyle, name = Remarques]{remarks}
+
+\newtheorem{theorem}{Théorème}
+\newtheorem{corollary}{Corollaire}
+\newtheorem{lemma}{Lemme}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+
+\theoremstyle{definition}
+
+\newtheorem{definition}{Définition}[section]
+\newtheorem{example}{Exemple}[section]
+\newtheorem{remark}{\textcolor{red}{Remarque}}[section]
+\newtheorem{exer}{\textbf{Exercice}}[section]
+
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Intro. to Real Analysis \hfill Created by Pierre-O. Paris{\'e}\\
+	Midterm 01 \hfill Fall 2021, 10/01/2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+\vspace*{1cm}
+
+\noindent\makebox[\textwidth]{\textbf{Last name:}\enspace \hrulefill}
+\makebox[\textwidth]{\textbf{First name:}\enspace\hrulefill}
+
+\vspace*{1cm}
+\begin{center}
+\gradetable[h][questions]
+\end{center}
+\vspace*{1cm}
+
+{\bf Instructions:} Make sure to write your complete name on your copy. You must answer all the questions below and write your answers directly on the questionnaire. At the end of the 50 minutes, hand out your copy. 
+
+No devises such as a smart phone, cell phone, laptop, or tablet can be used during the exam. You are not allowed to use the lecture notes and the textbook also.
+
+Make sure to show all your work. State clearly any theorem or definition you are using in your proofs or your calculations.
+
+\vspace*{2cm}
+\noindent Good luck! \hfill Pierre-Olivier Parisé
+
+\qformat{\rule{0.3\textwidth}{.4pt} \begin{large}{\textsc{Question}} \thequestion \end{large} \hspace*{0.2cm} \hrulefill \hspace*{0.1cm} \textbf{(\totalpoints\hspace*{0.1cm} pts)}}
+
+\vspace*{0.5cm}
+
+\newpage
+
+\begin{questions}
+
+\question
+Let $S \subseteq \bR$ be a subset of real numbers bounded from below.
+	
+	\begin{parts}
+	
+	\part[5]
+	Prove that $S$ has an infinimum.
+	\begin{solution}
+	Since $S$ is bounded from below, there is a number $m \in \bR$ such that $s \geq m$ for any $s \in S$. Define $E:= \{ -s \, : \, s \in S\}$. Then, the set $E$ is bounded from above by $-m$ because if $e \in E$, then $e = -s$ for some $s \in S$ and so
+		\begin{align*}
+		s \geq m \quad \Ra \quad -s \leq -m \quad \Ra \quad e \leq -m .
+		\end{align*}
+	So, by AC, $\sup E$ exists and call it $x$. We will show that $-x$ is the infimum of $S$. Since $-s \leq x$ for any $s \in S$, we have that $-x \leq s$ for any $s \in S$. Thus, $-m$ is a lower bound for $E$. If $b$ is any lower bound for $S$, then $-b$ is an upper bound for $E$. Then, $x \leq -b$ and so $b \leq -x$. This shows that $-x$ is the greatest lower bound of $S$.
+	\end{solution}
+	
+	\part[5]
+	Let $x := \inf S$. Prove that for each $\varepsilon > 0$, there exists an element $s \in S$ such that $x \leq s < x + \varepsilon$.
+	\begin{solution}
+	Let $\varepsilon > 0$. Suppose that there is no such $s$. Then $x + \varepsilon \leq s$ for any $s \in S$. This means that $x + \varepsilon$ is a lower bound for $S$ which is smaller that $x$. This contradicts the fact that $x$ the infimum of $S$. Thus, we must conclude that there is a $s \in S$ such that $x \leq s < x + \varepsilon$.
+	\end{solution}
+\end{parts}
+
+\newpage
+
+\question[10]
+Show that if a sequence $(a_n)_{n = 0}^\infty$ is a Cauchy sequence, then $(a_n^2)_{n= 1}^\infty$ is a Cauchy sequence.
+\begin{solution}
+Suppose that $(a_n)$ is a Cauchy sequence. We know that every Cauchy sequence is also a convergent sequence, say $a_n \ra A$. So, $(a_n)$ is also a convergent sequence. Now, from the product law of limits, we have that $a_n^2 \ra A^2$. So the sequence $(a_n^2)$ is convergent. Now, since every convergent sequence is Cauchy, we have that $(a_n^2)$ is also a Cauchy sequence.
+\end{solution}
+	
+\newpage
+
+\question[10]
+Let $(a_n)_{n = 1}^\infty$ be a sequence of non-negative real numbers ($a_n \geq 0$, for any $n \geq 1$). Define the sequence $b_n := a_1 + a_2 + \cdots + a_n$. Show that if $(b_n)_{n =1}^\infty$ is bounded from above, then the sequence $(b_n)$ converges.
+
+\begin{solution}
+Suppose that the sequence $(b_n)$ is bounded from above. If we show that it is bounded from below and increasing, then, from a Theorem in the lecture notes, it will imply that the sequence $(b_n)$ is convergent.
+
+We will prove that $(b_n)$ is increasing using induction on $n$. For $n = 1$, we have $b_1 = a_1 \leq a_1 + a_2$ because $a_n \geq 0$, and so $b_1 \leq a_1 + a_2 = b_2$. Suppose that we have $b_n \leq b_{n + 1}$ for some $n \in \bN$. Then, since $a_{n + 2} \geq 0$, we have
+	\begin{align*}
+	b_{n + 1} = a_1 + a_2 + \cdots + a_n + a_{n + 1} \leq a_1 + a_2 + \cdots + a_n + a_{n + 1} + a_{n +2} = b_{n + 2} .
+	\end{align*}
+So, $b_{n + 1} \leq b_{n + 2}$. This completes the induction. 
+
+Since $(b_n)$ is increasing, we have $b_n \geq a_1$ and since $a_1 \geq 0$. So, the sequence is bounded from below by $0$.
+
+By a Theorem from the lecture notes on monotone sequences, we can infer that the sequence $(b_n)$ converges.
+\end{solution}
+
+	
+\newpage
+
+\question[10]
+Let $(a_n)_{n = 1}^\infty$ be the sequence of non-negative real numbers defined recursively by
+	\begin{align*}
+	a_n = \sqrt{a_{n-1}} + \sqrt{a_{n-2}} \quad (n \geq 3 ) 
+	\end{align*}
+Assume that the sequence $(a_n)$ converges to a limit $A$, that is $a_n \ra A$ for some $A \in \bR$. Find the possible values of $A$.
+\begin{solution}
+Taking the limit on both sides and using the summation limit law, we get
+	\begin{align*}
+	\lim_{n \ra \infty} a_n = \lim_{n \ra \infty} \sqrt{a_{n-1}} + \lim_{n \ra \infty} \sqrt{a_{n -2}}. 
+	\end{align*}
+So, using the root law, we find out that
+	\begin{align*}
+	A = \sqrt{\lim_{n \ra \infty} a_{n - 1}} + \sqrt{\lim_{n \ra \infty} a_{n - 2}} .
+	\end{align*}
+Recall that the starting point in a sequence doesn't affect the value of the limit, so $\lim_{n \ra \infty} a_{n -1} = A$ and $\lim_{n \ra \infty} a_{n - 2} = A$. Thus, we get the following equation
+	\begin{align*}
+	A = \sqrt{A} + \sqrt{A} = 2\sqrt{A} .
+	\end{align*}
+Squaring both sides, we get $A^2 = 4A$. The solutions are $A = 0$ or $A = 4$. 
+\end{solution}
+	
+\end{questions}
+
+\end{document}

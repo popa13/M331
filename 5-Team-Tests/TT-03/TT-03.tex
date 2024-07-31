@@ -1,0 +1,216 @@
+\documentclass[addpoints, 12pt]{exam}%, answers]
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{arydshln}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{enumitem}
+
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,patterns}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{thmtools}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{pifont}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cF}{\mathcal{F}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\DeclareMathOperator{\dom}{dom}
+
+%%%%%% Définitions Theorems and al.
+%\declaretheoremstyle[preheadhook = {\vskip0.2cm}, mdframed = {linewidth = 2pt, backgroundcolor = yellow}]{myThmstyle}
+%\declaretheoremstyle[preheadhook = {\vskip0.2cm}, postfoothook = {\vskip0.2cm}, mdframed = {linewidth = 1.5pt, backgroundcolor=green}]{myDefstyle}
+%\declaretheoremstyle[bodyfont = \normalfont , spaceabove = 0.1cm , spacebelow = 0.25cm, qed = $\blacktriangle$]{myRemstyle}
+
+%\declaretheorem[ style = myThmstyle, name=Th\'eor\`eme]{theorem}
+%\declaretheorem[style =myThmstyle, name=Proposition]{proposition}
+%\declaretheorem[style = myThmstyle, name = Corollaire]{corollary}
+%\declaretheorem[style = myThmstyle, name = Lemme]{lemma}
+%\declaretheorem[style = myThmstyle, name = Conjecture]{conjecture}
+
+%\declaretheorem[style = myDefstyle, name = D\'efinition]{definition}
+
+%\declaretheorem[style = myRemstyle, name = Remarque]{remark}
+%\declaretheorem[style = myRemstyle, name = Remarques]{remarks}
+
+\newtheorem{theorem}{Théorème}
+\newtheorem{corollary}{Corollaire}
+\newtheorem{lemma}{Lemme}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+
+\theoremstyle{definition}
+
+\newtheorem{definition}{Définition}[section]
+\newtheorem{example}{Exemple}[section]
+\newtheorem{remark}{\textcolor{red}{Remarque}}[section]
+\newtheorem{exer}{\textbf{Exercice}}[section]
+
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Intro. to Real Analysis \hfill Pierre-Olivier Paris{\'e}\\
+	Team test 03 \hfill Fall 2021, 12/03/2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+\vspace*{1cm}
+
+\noindent\makebox[\textwidth]{\textbf{Name of the members of the team:}\enspace \hrulefill}
+\noindent\makebox[\textwidth]{\hrulefill}
+\makebox[\textwidth]{\textbf{Team name (if any):}\enspace\hrulefill}
+
+\vspace*{1cm}
+
+\vspace*{1cm}
+
+{\bf Instructions:} You must answer all the questions in teams of $3$ and hand out one copy per team. There are \underline{\textsc{2 questions}} on this test. The scores for each questions is on the last page of the test.
+
+You are allowed to use the lecture notes only. No other tools such as a cell-phone, a calculator, or a laptop. Only your pen and eraser. The space between the questions are there to write the final versions of your answers.
+
+\vspace*{5cm}
+
+Be the better version of yourself!
+
+\qformat{\rule{0.3\textwidth}{.4pt} \begin{large}{\textsc{Question}} \thequestion \end{large} \hrulefill \hspace*{0.1cm} \textbf{(\totalpoints\hspace*{0.1cm} pts)}}
+
+\newpage
+
+\begin{questions}
+
+\question
+Let $f : (a, b] \ra \bR$ be a function where $a < b$.
+
+	\begin{parts}
+	\part[5]
+	How would you define the Riemann integral of $f$ on $(a, b]$? Explain in details your definition.
+	\begin{solution}
+	First, we have to make sure that the function is Riemann integrable on each $[c, b]$ where $a < c < b$. This is well-defined because the Riemann integral on closed intervals were defined in the lecture notes. Now, we define the integral of $f$ on $(a, b]$ by taking the limit as $c$ goes to $a$ of the integral of $f$ on $[c, b]$. So the definition will be: $f : (a, b] \ra \bR$ is Riemann integrable on $(a, b]$ if
+		\begin{itemize}
+		\item $f$ is Riemann integrable on $[c, b]$ for any $c \in (a, b)$.
+		\item the $\lim_{c \ra a^+} \int_c^b f$ exists.
+		\end{itemize}
+	We then define the integral of $f$ from $a$ to $b$ by
+		\begin{align*}
+		\int_a^b f = \lim_{c \ra a^+} \int_c^b .
+		\end{align*}
+	\end{solution}
+	
+	\part[5]
+	Find a function $f : (0, 1] \ra \bR$ that is Riemann integrable on $(0, 1]$ (with respect to your definition) but is unbounded on $(0, 1]$.
+	\begin{solution}
+	Take $f(x) = \frac{1}{\sqrt{x}}$ defined on $(0, 1]$. The integral on $[c, 1]$ (for $0 < c < 1$) is
+		\begin{align*}
+		\int_c^1 \frac{1}{\sqrt{x}} \, dx = \left. 2 x^{1/2} \right|_c^1 = 2 (1 - \sqrt{c}) .
+		\end{align*}
+	So, as $c \ra 0^+$, we get
+		\begin{align*}
+		\int_0^1 \frac{1}{\sqrt{x}} \, dx = \lim_{c \ra 0^+} 2 (1 - \sqrt{c}) = 2 .
+		\end{align*}
+	We see that $f(x) = 1/\sqrt{x}$ is unbounded on $(0, 1]$ because $\lim_{x \ra 0^+} f(x) = +\infty$.
+	\end{solution}
+	\end{parts}
+	
+	
+\newpage
+
+\question[10]
+Find the limit of the sequence $(a_n)_{n =1}^\infty$ if
+	\begin{align*}
+	a_n = \sum_{k = 1}^n \frac{k}{k^2 + n^2}.
+	\end{align*}
+
+	\begin{solution}
+	We have
+		\begin{align*}
+		a_n = \sum_{k = 1} \frac{1}{n} \Big( \frac{k/n}{1 + (k/n)^2} \Big) .
+		\end{align*}
+	This, as $n \ra \infty$, represents the integral from $0$ to $1$ of the function $f(x) = \frac{x}{1 + x^2}$. So,
+		\begin{align*}
+		\lim_{n \ra \infty} a_n = \int_0^1 \frac{x}{1 + x^2} \, dx = (1/2) \log (2) .
+		\end{align*}
+	\end{solution}
+	
+	
+\end{questions}
+
+
+\vfill
+\noindent\hrulefill \hspace{0.1cm} \textsc{Scores table}\hspace{0.1cm} \hrulefill
+
+\begin{center}
+\gradetable[h][questions]
+\end{center}
+
+\end{document}

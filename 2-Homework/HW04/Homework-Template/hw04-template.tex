@@ -1,0 +1,295 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+
+\usepackage{comment}
+\usepackage{url}
+
+\usepackage{titlesec}
+\titleformat{\section}[frame]
+{\normalfont\scshape}
+{\thesection}{8pt}{\centering}
+
+\usepackage{array}
+
+\pgfplotsset{compat=1.16}
+
+%\usepackage[margin=1cm]{cloze}
+
+\usepackage[thmmarks]{ntheorem}
+
+% MATH commands
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bQ}{\mathbb{Q}}
+
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fM}{\mathfrak{M}}
+
+\newcommand{\ga}{\left\langle}
+\newcommand{\da}{\right\rangle}
+\newcommand{\oa}{\left\lbrace}
+\newcommand{\fa}{\right\rbrace}
+\newcommand{\oc}{\left[}
+\newcommand{\fc}{\right]}
+\newcommand{\op}{\left(}
+\newcommand{\fp}{\right)}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\renewcommand{\Re}{\mathrm{Re}\,}
+\renewcommand{\Im}{\mathrm{Im}\,}
+\newcommand{\Arg}{\mathrm{Arg}\,}
+\newcommand{\Arctan}{\mathrm{Arctan}\,}
+\newcommand{\sech}{\mathrm{sech}\,}
+\newcommand{\csch}{\mathrm{csch}\,}
+\newcommand{\Log}{\mathrm{Log}\,}
+\newcommand{\cis}{\mathrm{cis}\,}
+
+\newcommand{\ran}{\mathrm{ran}\,}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\Sp}{\mathrm{span}\,}
+\newcommand{\Inv}{\mathrm{Inv}\,}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+\newcommand{\HOL}{\mathrm{Hol}}
+\newcommand{\cl}{\mathrm{clos}}
+\newcommand{\ve}{\varepsilon}
+
+\tikzstyle{myboxT} = [draw=black, fill=black!0,line width = 1pt,
+    rectangle, rounded corners = 0pt, inner sep=8pt, inner ysep=8pt]
+    
+\newcommand{\MyC}[1]{\begin{tikzpicture}
+\node (boxIntro) at (0,0) {};
+\node [myboxT](Intro) at (boxIntro){%
+	\begin{minipage}{0.9\textwidth}
+	#1
+	\end{minipage}};
+\end{tikzpicture}}
+
+%%%%  Environnement exer et solutionnaire
+{\theorembodyfont{}
+\theoremstyle{plain}
+\theoremseparator{\textbf{.}}
+\theoremsymbol{}
+\newtheorem{exer}{\textbf{Exercise}}}
+
+{\theorembodyfont{\color{black}}
+\theoremstyle{plain}
+\theoremseparator{\textbf{:}}
+\theoremsymbol{$\square$}
+\newtheorem*{sol}{\textbf{Solution}}}
+
+
+\renewcommand*{\theexer}{\arabic{exer}}
+\renewcommand*{\thesol}{\arabic{sol}}
+
+
+\newcommand{\headHW}[4]{%
+	\noindent \hrulefill \\
+	MATH-#1 #2 \\
+	#3 #4
+	
+}
+
+\begin{document}
+	\noindent \hrulefill \\
+	MATH-331 Introduction to Real Analysis \hfill YOUR FULL NAME\\
+	Homework 04 \hfill Fall 2021\\\vspace*{-0.7cm}
+	
+	\noindent\hrulefill
+	
+	\noindent Due date: October 25${}^{\text{th}}$ 1:20pm \hfill Total: \hspace{0.3cm}/70.
+	
+\vspace*{0.5cm}
+
+	\bgroup \renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+\centering
+\begin{tabular}{|m{1.5cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|>{\centering\arraybackslash}p{0.75cm}|}
+\hline
+Exercise & 1 (5) & 2 (5) & 3 (5) & 4 (5) & 5 (10) & 6 (10) & 7 (5) & 8 (5) & 9 (5) & 10 (10) \\
+\hline
+Score & & & & & & & & & &  \\\hline
+\end{tabular}
+\caption{Scores for each exercises}
+\end{table}
+\egroup
+	
+\vspace*{0.5cm}
+
+{\bf Instructions:} You must answer all the questions below and send your solution by email (to \url{parisepo@hawaii.edu}). If you decide to not use {\LaTeX} to hand out your solutions, please be sure that after you scan your copy, it is clear and readable. Make sure that you attached a copy of the homework assignment to your homework. 
+
+\noindent If you choose to use {\LaTeX}, you can use the template available on the course website.
+
+\noindent No late homework will be accepted. No format other than PDF will be accepted. Name your file as indicated in the syllabus.
+
+\section{Writing problems}
+For each of the following problems, you will be asked to write a clear and detailed proof. You will have the chance to rewrite your solution in your semester project after receiving feedback from me.
+
+%% ---------------------------------------------
+\begin{exer}
+(5 pts)
+Prove that, if $0 < x < \pi/2$, then $0 \leq \sin x \leq x$ with a geometric argument. [Hint: View $\sin x$ as a point on the unit circle in the first quadrant.]
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f : A \ra \bR$ and $g : B \ra A$ be two functions where $A, B \subset \bR$. Let $a$ be an accumulation point of $A$ and $b$ be an accumulation point of $B$. Suppose that
+	\begin{itemize}
+	\item $\lim_{t \ra b} g(t) = a$.
+	\item there is a $\eta > 0$ such that for any $t \in B \cap (b - \eta ,  b + \eta )$, $g(t) \neq a$.
+	\item $f$ has a limit at $a$.
+	\end{itemize}
+Prove that $f \circ g$ has a limit at $b$ and $\lim_{x \ra a} f(x) = \lim_{t \ra b} f(g(t))$. [This is the change of variable rule for limits.]
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f : [a, b] \ra \bR$ be continuous on $[a, b]$ and suppose that $f(x) = 0$ for each rational number $x$ in $[a, b]$. Prove that $f(x) = 0$ for all $x \in [a, b]$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(5 pts)
+Let $f: [a, b] \ra \bR$ be continuous on $[a, b]$ and suppose that $f(c) > 0$ for some $c \in [a, b]$. Prove that there exist a number $\eta$ and an interval $[u, v] \subset [a, b]$ such that $f(x) \geq \eta$ for all $x \in [u, v]$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-----------------------------------------------
+\begin{exer}
+(10 pts)
+Let $f : \bR \ra \bR$ be a function that satisfies $f(x + y) = f(x) + f(y)$ for any real number $x$ and $y$.
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item Suppose that $f$ is continuous at some point $c$. Prove that $f$ is continuous on $\bR$.
+	\item Suppose that $f$ is continuous on $\bR$ and that $f(1) = k$. Prove that $f(x) = kx$ for all $x \in \bR$. [Hint: start with $x$ integer, then $x$ rational, and finally use Exercise 3.]
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item 
+\item 
+\end{enumerate}
+\end{sol}
+
+
+
+\section{Homework problems}
+Answer all the questions below. Make sure to show your work.
+
+\begin{exer}
+(10pts)
+For each of the functions below, say if the limit exists or doesn't exist at the given point. Justify your answer (in other words, prove it!)
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item $f(x) = \sin (1/x)$ and $x_0 = 0$.
+	\item $f(x) = x \sin (1/x)$ adn $x_0 = 0$.
+	\end{enumerate}
+\end{exer}
+\begin{sol}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item 
+\item 
+\end{enumerate}
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Let $c \in (a, b)$ and let $f$ be a function defined on $(a, b)$ except at $c$. Suppose that $f(x) > 0$ for any $x \in (a, b) \backslash \{ c \}$, that $\lim_{x \ra c} f(x)$ exists, and that
+	\begin{align*}
+	\lim_{x \ra c} f(x) = \lim_{x \ra c} \oc (f(x))^2 - f(x) - 3 \fc .
+	\end{align*} 
+Find the value of $\lim_{x \ra c} f(x)$. Explain each step carefully.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Prove that the function $f : \bR \ra \bR$ defined by
+	\begin{align*}
+	f(x) := \begin{cases}
+	x & \text{, } x \in \bQ \\
+	-x &  \text{, } x \not\in \bQ .
+	\end{cases}
+	\end{align*}
+is discontinuous at any point of $\bR \backslash \{ 0 \}$ and continuous at $0$.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%------------------------------------------------
+\begin{exer}
+(5 pts)
+Let $p(x) = x^2 + 2$. Find an interval where $p$ is strictly decreasing and find a formula for its inverse.
+\end{exer}
+\begin{sol}
+
+\end{sol}
+
+%-------------------------------------------------
+\begin{exer}
+(10 pts)
+Let $p(x) = ax^3 + bx^2 + cx + d$ be a polynomial of degree $3$ and $a > 0$. Prove that $p$ has at least one real root by following these steps:
+	\begin{enumerate}[label=\textbf{\alph*)}]
+	\item Prove that $\lim_{x \ra \infty} p(x) = \infty$.
+	\item Prove that $\lim_{x \ra -\infty} p (x) = -\infty$.
+	\item Conclude.
+	\end{enumerate}
+[Hint for a): write your polynomial $p(x) = ax^3 + bx^2 + cx + d$ as $x^3 (a + b/x + c/x^2 + d/x^3)$ and use the fact that $\lim_{x \ra \infty} 1/x^n = 0$ for every $n \geq 1$.]
+\end{exer}
+\begin{sol}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item 
+\item 
+\item
+\end{enumerate}
+\end{sol}
+
+\end{document}
